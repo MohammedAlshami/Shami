@@ -44,22 +44,27 @@ const page = () => {
       bookUrl: "",
     },
     {
-        imageUrl:
-          "https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1654371463i/18144590.jpg",
-        title: "The Alchemist",
-        author: "Paulo Coelho",
-        bookUrl: "",
-      },
-      {
-        imageUrl:
-          "https://m.media-amazon.com/images/I/717p8VLz79L._AC_UF1000,1000_QL80_.jpg",
-        title: "Influence: Science and Practice",
-        author: "Robert Cialdini",
-        bookUrl: "",
-      },
+      imageUrl:
+        "https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1654371463i/18144590.jpg",
+      title: "The Alchemist",
+      author: "Paulo Coelho",
+      bookUrl: "",
+    },
+    {
+      imageUrl:
+        "https://m.media-amazon.com/images/I/717p8VLz79L._AC_UF1000,1000_QL80_.jpg",
+      title: "Influence: Science and Practice",
+      author: "Robert Cialdini",
+      bookUrl: "",
+    },
 
-      
-   
+    {
+      imageUrl:
+        "https://www.getstoryshots.com/wp-content/uploads/The-Art-of-Seduction-PDF-Summary.png",
+      title: "The Art of Seduction",
+      author: "Robert Greene",
+      bookUrl: "",
+    },
   ];
   return (
     <div className="relative  mx-auto my-24">
