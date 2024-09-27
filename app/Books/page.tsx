@@ -65,6 +65,16 @@ const page = () => {
       author: "Robert Greene",
       bookUrl: "",
     },
+    {
+      imageUrl:
+        "https://cdn.kobo.com/book-images/bbedd392-d78c-457f-938e-98a892c8e668/1200/1200/False/twilight-7.jpg",
+      title: "Twilight, Book 1 : Twilight",
+      author: "Robert Greene",
+      bookUrl: "",
+    },
+
+    
+
   ];
   return (
     <div className="relative  mx-auto my-24">
