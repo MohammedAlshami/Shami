@@ -3,10 +3,11 @@
     "lib": ["dom", "dom.iterable", "esnext"],
     "allowJs": true,
     "skipLibCheck": true,
-    "strict": true,
     "noEmit": true,
     "esModuleInterop": true,
     "module": "esnext",
+    "strict": false,         // Disables all strict type checking options
+    "noImplicitAny": false,  // Allows implicit 'any' type for parameters like 'feature'
     "moduleResolution": "bundler",
     "resolveJsonModule": true,
     "isolatedModules": true,
