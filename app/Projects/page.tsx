@@ -14,7 +14,7 @@ const projects = [
   {
     title: "SlideMap",
     description: "A deep dive into CSS Grid Layout for responsive design.",
-    imageUrl: "https://picsum.photos/1000/1001",
+    imageUrl: "/Projects/1.png",
   },
   {
     title: "EZPZ: Website Generator",
@@ -24,7 +24,7 @@ const projects = [
   {
     title: "Recipe Finder",
     description: "An essential guide to writing efficient JavaScript code.",
-    imageUrl: "https://picsum.photos/1000/1003",
+    imageUrl: "https://raw.githubusercontent.com/MohammedAlshami/Recipe-Finder/refs/heads/main/Design%20Concepts/Home%20page%402x.png",
   },
   {
     title: "Drangue",

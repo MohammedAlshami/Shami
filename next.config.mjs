@@ -1,6 +1,13 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
+  reactStrictMode: true,
+  eslint: {
+    ignoreDuringBuilds: true,
+  },
+  output: "export",
+  basePath: "/Shami",
   images: {
+    unoptimized: true,
     domains: [
       "assets.aceternity.com",
       "images.unsplash.com",
@@ -13,6 +20,7 @@ const nextConfig = {
       "media.licdn.com",
       "camo.githubusercontent.com",
       "picsum.photos",
+      "raw.githubusercontent.com",
     ],
   },
 };
