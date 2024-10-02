@@ -26,6 +26,8 @@ function Navbar({ className }: { className?: string }) {
                 <HoveredLink href="/Places">Places</HoveredLink>
                 <HoveredLink href="/People">People</HoveredLink>
                 <HoveredLink href="/Map">Map</HoveredLink>
+                <HoveredLink href="/Learning">Learning</HoveredLink>
+
                 <HoveredLink href="/Timeline">Timeline</HoveredLink>
               </div>
             </MenuItem>
@@ -45,8 +47,15 @@ function Navbar({ className }: { className?: string }) {
                 <HoveredLink href="/Resume">Resume</HoveredLink>
                 <HoveredLink href="/Projects">Projects</HoveredLink>
                 <HoveredLink href="/Meetings">Meetings</HoveredLink>
+                <HoveredLink href="/Connections">Connections</HoveredLink>
 
                 <HoveredLink href="/Articles">Articles</HoveredLink>
+              </div>
+            </MenuItem>
+
+            <MenuItem setActive={setActive} active={active} item="Drangue">
+              <div className="flex flex-col space-y-4 text-sm">
+                <HoveredLink href="/Drangue/Pitch">Pitch</HoveredLink>
               </div>
             </MenuItem>
 

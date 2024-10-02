@@ -6,8 +6,8 @@ const Mentors = () => {
       avatar:
         "https://media.licdn.com/dms/image/v2/D5603AQHenq64sUSg_Q/profile-displayphoto-shrink_400_400/profile-displayphoto-shrink_400_400/0/1704122646101?e=1732752000&v=beta&t=1kG508G57NztVM703d4-IEDubu6h14sBvRWLli-uLxg",
       name: "Vicks Kanagasingam",
-      title: "Product designer",
-      desc: "Lorem Ipsum is simply dummy text of the printing and typesettin industry. Lorem Ipsum has been the industry's standard dummy",
+      title: "Chief Operating Officer @ Asia mobiliti",
+      desc: "Very Supportive and helpful person. He is a great mentor and a friend. He is always there to help and guide you.",
       linkedin: "javascript:void(0)",
       twitter: "javascript:void(0)",
       github: "javascript:void(0)",
@@ -17,11 +17,21 @@ const Mentors = () => {
         "https://cdn.prod.website-files.com/60a75d8226f3295ecacf9e33/6698ae18a0ff03e619365bea_6695f21dc3e969bc15ec607d_SLT%2520Profile%252010.png",
       name: "Rita Irina Abd Wahab",
       title: "Software engineer",
-      desc: "Lorem Ipsum is simply dummy text of the printing and typesettin industry. Lorem Ipsum has been the industry's standard dummy",
+      desc: "A realistic person, a bit stern but can be of very very big help due to her connections",
       linkedin: "javascript:void(0)",
       twitter: "javascript:void(0)",
       github: "javascript:void(0)",
-    },  
+    },
+    {
+      avatar:
+        "https://media.licdn.com/dms/image/v2/C4D03AQGfzdEsa_y8Vw/profile-displayphoto-shrink_400_400/profile-displayphoto-shrink_400_400/0/1581360795687?e=1733356800&v=beta&t=FUE56RkQX2IQl1f9xoIn3b8RewzPDLniXoZktLzhtPg",
+      name: "Udit Dokania",
+      title: "Senior Computer Vision Software Developer",
+      desc: "Will know once I meet him, but hopefully he can help with AI Technical part aspect",
+      linkedin: "https://www.linkedin.com/in/udit-dokania-471a6199",
+      twitter: "javascript:void(0)",
+      github: "javascript:void(0)",
+    },
   ];
 
   return (
