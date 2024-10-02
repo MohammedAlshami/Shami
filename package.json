@@ -14,12 +14,14 @@
     "@react-leaflet/core": "^2.1.0",
     "@tabler/icons-react": "^3.18.0",
     "clsx": "^2.1.1",
+    "firebase": "^10.14.0",
     "framer-motion": "^11.9.0",
     "leaflet": "^1.9.4",
     "next": "14.2.13",
     "react": "^18",
     "react-dom": "^18",
     "react-leaflet": "^4.2.1",
+    "react-youtube": "^10.1.0",
     "tailwind-merge": "^2.5.2"
   },
   "devDependencies": {

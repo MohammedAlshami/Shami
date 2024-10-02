@@ -1,99 +1,82 @@
+// pages/BooksPage.tsx (or your existing page)
 "use client";
+import { useEffect, useState } from "react";
 import { DirectionAwareHover } from "@/components/ui/direction-aware-hover";
-const page = () => {
-  const places = [
-    {
-      imageUrl:
-        "https://d28hgpri8am2if.cloudfront.net/book_images/onix/cvr9781982171452/how-to-win-friends-and-influence-people-9781982171452_hr.jpg",
-      title: "How to win friends and influence People",
-      author: "Dale Carnegie",
-      bookUrl: "",
-    },
-    {
-      imageUrl:
-        "https://www.thebvnewspaper.com/wp-content/uploads/2018/10/1480971639-thousand-splendid-suns-tickets.jpg",
-      title: "A thousand splendid suns",
-      author: "Khaled Hosseini",
-      bookUrl: "",
-    },
-    {
-      imageUrl: "https://cdn2.penguin.com.au/covers/400/9780141315188.jpg",
-      title: "The diary of a young by Anne Frank review",
-      author: "Anne Frank",
-      bookUrl: "",
-    },
-    {
-      imageUrl:
-        "https://library.umpsa.edu.my/images/2024/03/22/Rich%20Dad%20Poor%20Dad.jpg",
-      title: "Rich Dad Poor Dad",
-      author: "Robert Kiyosaki",
-      bookUrl: "",
-    },
-    {
-      imageUrl:
-        "https://m.media-amazon.com/images/I/71pXnVZWo5L._AC_UF894,1000_QL80_.jpg",
-      title: "Social Engineering: The Art of Human Hacking",
-      author: "Christopher Hadnagy",
-      bookUrl: "",
-    },
-    {
-      imageUrl:
-        "https://www.marclevy.com/wp-content/uploads/2023/03/FILLE_COMME_ELLE_222127106_000_REIMP-scaled.jpg",
-      title: "A Woman Like Her",
-      author: "Marc Levy",
-      bookUrl: "",
-    },
-    {
-      imageUrl:
-        "https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1654371463i/18144590.jpg",
-      title: "The Alchemist",
-      author: "Paulo Coelho",
-      bookUrl: "",
-    },
-    {
-      imageUrl:
-        "https://m.media-amazon.com/images/I/717p8VLz79L._AC_UF1000,1000_QL80_.jpg",
-      title: "Influence: Science and Practice",
-      author: "Robert Cialdini",
-      bookUrl: "",
-    },
+import { getAllRecords, insertRecord } from "@/lib/firestoreFunctions";
+import BookModal from "./BookModal";
+// Define the interface for a Book record
+interface Book {
+  imageUrl: string;
+  title: string;
+  author: string;
+  bookUrl: string;
+}
 
-    {
-      imageUrl:
-        "https://www.getstoryshots.com/wp-content/uploads/The-Art-of-Seduction-PDF-Summary.png",
-      title: "The Art of Seduction",
-      author: "Robert Greene",
-      bookUrl: "",
-    },
-    {
-      imageUrl:
-        "https://cdn.kobo.com/book-images/bbedd392-d78c-457f-938e-98a892c8e668/1200/1200/False/twilight-7.jpg",
-      title: "Twilight, Book 1 : Twilight",
-      author: "Robert Greene",
-      bookUrl: "",
-    },
+const BooksPage: React.FC = () => {
+  const [books, setBooks] = useState<Book[]>([]);
+  const [isModalOpen, setModalOpen] = useState(false); // State for modal visibility
 
-    
+  useEffect(() => {
+    const fetchBooks = async () => {
+      try {
+        const booksFromFirestore = await getAllRecords("Books");
+        const typedBooks: Book[] = booksFromFirestore.map((record: any) => ({
+          imageUrl: record.imageUrl,
+          title: record.title,
+          author: record.author,
+          bookUrl: record.bookUrl,
+        }));
 
-  ];
+        setBooks(typedBooks);
+      } catch (error) {
+        console.error("Error fetching books: ", error);
+      }
+    };
+
+    fetchBooks();
+  }, []);
+
+  const handleAddBook = async (book: Book) => {
+    try {
+      await insertRecord("Books", book); // Insert the book into Firestore
+      setBooks((prev) => [...prev, book]); // Update the local state with the new book
+    } catch (error) {
+      console.error("Error adding book: ", error);
+    }
+  };
+
   return (
-    <div className="relative  mx-auto my-24">
-      <h2 className="text-center text-5xl text-white font-bold py-12">
-        My Books List
-      </h2>
-      {/* Map through the list of places */}
+    <div className="relative mx-auto my-24">
+      <div className="flex justify-between items-center py-12">
+        <h2 className="text-center text-5xl text-white font-bold">
+          My Books List
+        </h2>
+        <div
+          onClick={() => setModalOpen(true)} // Open modal on click
+          className="cursor-pointer text-sm text-white bg-neutral-800/40 border border-4 border-neutral-800 p-4 rounded-xl"
+        >
+          Add Book +
+        </div>
+      </div>
+      {/* Map through the list of books */}
       <div className="grid grid-cols-3">
-        {places.map((place, index) => (
+        {books.map((book, index) => (
           <div key={index} className="m-4 hover:cursor-pointer">
-            <DirectionAwareHover imageUrl={place.imageUrl}>
-              <p className="font-bold text-xl">{place.title}</p>
-              <p className="font-normal text-sm">by {place.author}</p>
+            <DirectionAwareHover imageUrl={book.imageUrl}>
+              <p className="font-bold text-xl">{book.title}</p>
+              <p className="font-normal text-sm">by {book.author}</p>
             </DirectionAwareHover>
           </div>
         ))}
       </div>
+      {/* Modal for adding a book */}
+      <BookModal
+        isOpen={isModalOpen}
+        onClose={() => setModalOpen(false)}
+        onAddBook={handleAddBook}
+      />
     </div>
   );
 };
 
-export default page;
+export default BooksPage;
