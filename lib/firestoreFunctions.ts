@@ -1,5 +1,5 @@
 import { db } from "./firebaseConfig"; // Import the `db` from your config
-import { collection, addDoc, getDocs } from "firebase/firestore";
+import { collection, addDoc, getDocs, doc, deleteDoc, updateDoc } from "firebase/firestore";
 
 /**
  * Insert a record or list of records into a Firestore collection.
@@ -27,6 +27,7 @@ export const insertRecord = async (tableName: string, record: object | object[])
     }
 
     return ids; // Return all inserted document IDs
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   } catch (e: any) {
     // Print the full error to see what went wrong
     console.error("Error adding document(s): ", e.message, e.code, e);
@@ -54,6 +55,7 @@ export const getAllRecords = async (tableName: string): Promise<object[]> => {
     });
 
     return records;
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   } catch (e: any) {
     console.error("Error retrieving documents:", e.message, e.code, e);
 
@@ -68,3 +70,55 @@ export const getAllRecords = async (tableName: string): Promise<object[]> => {
     }
   }
 };
+/**
+ * Update a record in a Firestore collection by its document ID.
+ * @param {string} tableName - The name of the Firestore collection.
+ * @param {string} id - The document ID of the record to update.
+ * @param {object} updatedFields - The fields to update in the document.
+ * @returns {Promise<void>} - A promise that resolves when the record is updated.
+ */
+export const updateRecord = async (tableName: string, id: string, updatedFields: object): Promise<void> => {
+  try {
+    const docRef = doc(db, tableName, id);
+    await updateDoc(docRef, updatedFields);
+    console.log(`Document with ID ${id} updated in collection "${tableName}".`);
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  } catch (e: any) {
+    console.error(`Error updating document with ID ${id} in "${tableName}":`, e.message, e.code, e);
+    
+    if (e.code === 'not-found') {
+      throw new Error(`Document with ID ${id} not found in the "${tableName}" collection.`);
+    } else if (e.code === 'permission-denied') {
+      throw new Error(`Permission denied: You don't have access to update the "${tableName}" collection.`);
+    } else {
+      throw new Error(`Failed to update document with ID ${id}: ${e.message}`);
+    }
+  }
+};
+
+/**
+ * Delete a record from a Firestore collection by its document ID.
+ * @param {string} tableName - The name of the Firestore collection.
+ * @param {string} id - The document ID of the record to delete.
+ * @returns {Promise<void>} - A promise that resolves when the record is deleted.
+ */
+export const deleteRecord = async (tableName: string, id: string): Promise<void> => {
+  try {
+    const docRef = doc(db, tableName, id);
+    await deleteDoc(docRef);
+    console.log(`Document with ID ${id} deleted from collection "${tableName}".`);
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  } catch (e: any) {
+    console.error(`Error deleting document with ID ${id} from "${tableName}":`, e.message, e.code, e);
+    
+    if (e.code === 'not-found') {
+      throw new Error(`Document with ID ${id} not found in the "${tableName}" collection.`);
+    } else if (e.code === 'permission-denied') {
+      throw new Error(`Permission denied: You don't have access to delete from the "${tableName}" collection.`);
+    } else {
+      throw new Error(`Failed to delete document with ID ${id}: ${e.message}`);
+    }
+  }
+};
+
+

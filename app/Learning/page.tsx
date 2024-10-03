@@ -1,191 +1,156 @@
-import { useState } from 'react';
-import Image from 'next/image';
-import YouTube from 'react-youtube';
+"use client";
+import React, { useState } from "react";
 
-interface Step {
-  title: string;
-  resources: { type: 'video' | 'link'; url: string }[];
-  checked: boolean; // Added checked property for each step
-}
+// Updated courses data structure to include sub-lessons
+const courses = [
+  {
+    category: "Machine Learning",
+    items: [
+      {
+        title: "Fundamentals of Machine Learning",
+        subLessons: ["Introduction to ML", "Supervised Learning"],
+      },
+      {
+        title: "How to build a classification system",
+        subLessons: ["Data Preprocessing", "Model Selection"],
+      },
+      {
+        title: "Building a semantic segmentation model",
+        subLessons: ["Understanding Segmentation", "Model Training"],
+      },
+    ],
+  },
+  {
+    category: "Presentation",
+    items: [
+      {
+        title: "Fundamentals of Presentation Skills",
+        subLessons: ["Planning a Presentation", "Engaging Your Audience"],
+      },
+      {
+        title: "How to build an effective slide deck",
+        subLessons: ["Design Principles", "Content Structuring"],
+      },
+      {
+        title: "Delivering with Confidence",
+        subLessons: ["Overcoming Anxiety", "Body Language"],
+      },
+    ],
+  },
+  {
+    category: "Business",
+    items: [
+      {
+        title: "Fundamentals of Business Management",
+        subLessons: ["Strategic Planning", "Resource Management"],
+      },
+      {
+        title: "How to write a business plan",
+        subLessons: ["Market Analysis", "Financial Projections"],
+      },
+      {
+        title: "Effective Team Management",
+        subLessons: ["Team Dynamics", "Conflict Resolution"],
+      },
+    ],
+  },
+  {
+    category: "Accounting",
+    items: [
+      {
+        title: "Fundamentals of Accounting",
+        subLessons: ["Basic Principles", "Financial Statements"],
+      },
+      {
+        title: "How to prepare taxes",
+        subLessons: ["Tax Forms", "Deductions and Credits"],
+      },
+      {
+        title: "Understanding Financial Reports",
+        subLessons: ["Balance Sheets", "Income Statements"],
+      },
+    ],
+  },
+];
 
-interface Topic {
-  title: string;
-  steps: Step[];
-}
+const CourseCategory = ({ category, items }) => {
+  const [expandedLessonIndex, setExpandedLessonIndex] = useState(null);
+  const [selectedSubLessons, setSelectedSubLessons] = useState(
+    Array(items.length)
+      .fill(null)
+      .map(() => Array(2).fill(false)) // Initialize based on the max number of sub-lessons
+  );
 
-interface Course {
-  title: string;
-  description: string;
-  image: string;
-  topics: Topic[];
-}
-
-export default function Page() {
-  // Initial courses data stored in state so we can update it dynamically
-  const [courses, setCourses] = useState<Course[]>([
-    {
-      title: 'JavaScript Basics',
-      description: 'Learn the fundamentals of JavaScript.',
-      image: '/js-course.png',
-      topics: [
-        {
-          title: 'Variables and Types',
-          steps: [
-            {
-              title: 'Learn about variables',
-              resources: [
-                { type: 'video', url: 'https://www.youtube.com/watch?v=W6NZfCO5SIk' },
-                { type: 'link', url: 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Grammar_and_types' },
-              ],
-              checked: false,
-            },
-            {
-              title: 'Data types overview',
-              resources: [
-                { type: 'link', url: 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Data_structures' },
-              ],
-              checked: false,
-            },
-          ],
-        },
-        {
-          title: 'Functions',
-          steps: [
-            {
-              title: 'Understanding functions',
-              resources: [
-                { type: 'video', url: 'https://www.youtube.com/watch?v=MFuwkrseXVE' },
-                { type: 'link', url: 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Functions' },
-              ],
-              checked: false,
-            },
-          ],
-        },
-      ],
-    },
-    {
-      title: 'React Basics',
-      description: 'Understand the basics of React.js.',
-      image: '/react-course.png',
-      topics: [
-        {
-          title: 'Components and Props',
-          steps: [
-            {
-              title: 'Intro to Components',
-              resources: [
-                { type: 'link', url: 'https://reactjs.org/docs/components-and-props.html' },
-                { type: 'video', url: 'https://www.youtube.com/watch?v=XtMThy8QKqU' },
-              ],
-              checked: false,
-            },
-          ],
-        },
-      ],
-    },
-  ]);
-
-  const [activeCourse, setActiveCourse] = useState<number | null>(null);
-  const [activeTopic, setActiveTopic] = useState<number | null>(null);
-
-  const toggleCourse = (index: number) => {
-    setActiveCourse(activeCourse === index ? null : index);
-    setActiveTopic(null); // Reset topic if course changes
+  const toggleSubLessons = (index) => {
+    setExpandedLessonIndex((prevIndex) => (prevIndex === index ? null : index));
   };
 
-  const toggleTopic = (index: number) => {
-    setActiveTopic(activeTopic === index ? null : index);
-  };
-
-  const handleCheckStep = (courseIndex: number, topicIndex: number, stepIndex: number) => {
-    setCourses((prevCourses) => {
-      const updatedCourses = [...prevCourses];
-      const currentStep = updatedCourses[courseIndex].topics[topicIndex].steps[stepIndex];
-      currentStep.checked = !currentStep.checked; // Toggle checked state
-      return updatedCourses;
-    });
+  const handleCheckboxChange = (lessonIndex, subLessonIndex) => {
+    const newSelectedSubLessons = [...selectedSubLessons];
+    newSelectedSubLessons[lessonIndex][subLessonIndex] =
+      !newSelectedSubLessons[lessonIndex][subLessonIndex]; // Toggle the checkbox state
+    setSelectedSubLessons(newSelectedSubLessons);
   };
 
   return (
-    <div className="min-h-screen bg-neutral-800 text-white p-4">
-      <h1 className="text-3xl font-bold mb-8 text-center">My Learning Roadmap</h1>
-      <div className="grid gap-4">
-        {courses.map((course, courseIndex) => (
-          <div
-            key={courseIndex}
-            className={`border bg-neutral-800/40 border-neutral-700 rounded-lg p-4 transition-all ${
-              activeCourse === courseIndex ? 'w-full' : 'w-full md:w-1/2'
-            }`}
-            onClick={() => toggleCourse(courseIndex)}
-          >
-            <div className="flex flex-col md:flex-row items-center cursor-pointer hover:bg-neutral-700 transition-colors">
-              <Image
-                src={course.image}
-                alt={course.title}
-                width={100}
-                height={100}
-                className="rounded-lg mb-4 md:mb-0 md:mr-4"
-              />
-              <div className="flex-1">
-                <h2 className="text-xl font-bold">{course.title}</h2>
-                <p>{course.description}</p>
+    <div className="text-center hover:-translate-y-2 transition-transform duration-500 ease-in-out">
+      <h2 className="font-bold text-2xl text-neutral-200 py-2">{category}</h2>
+      <div className="bg-neutral-800/40 border border-2 border-neutral-800 rounded-lg p-4 py-6 flex flex-col gap-4">
+        {items.map((item, index) => {
+          const checkedCount = selectedSubLessons[index].filter(Boolean).length; // Count checked boxes
+          const totalSubLessons = item.subLessons.length; // Get total sub-lessons for the current lesson
+          return (
+            <div
+              key={index}
+              className="text-left bg-neutral-800/40 border border-2 border-neutral-800 text-white rounded-lg py-6 hover:-translate-y-2 transition-transform duration-500 ease-in-out cursor-pointer px-4 flex flex-col gap-4"
+            >
+              <div
+                className="flex justify-between items-center gap-12"
+                onClick={() => toggleSubLessons(index)}
+              >
+                <div>{item.title}</div>
+                <div className="bg-neutral-800 p-2 rounded-lg">
+                  {checkedCount}/{totalSubLessons}
+                </div>
               </div>
-            </div>
-            {activeCourse === courseIndex && (
-              <div className="mt-4">
-                {course.topics.map((topic, topicIndex) => (
-                  <div key={topicIndex} className="mt-4">
-                    <h3
-                      className="text-lg font-semibold cursor-pointer hover:text-neutral-300"
-                      onClick={() => toggleTopic(topicIndex)}
+              {expandedLessonIndex === index && (
+                <div className="flex flex-col gap-4 mt-2">
+                  {item.subLessons.map((subLesson, subIndex) => (
+                    <div
+                      key={subIndex}
+                      className="flex justify-between items-center p-4 bg-neutral-800 rounded-lg"
                     >
-                      {topic.title}
-                    </h3>
-                    {activeTopic === topicIndex && (
-                      <div className="ml-4 mt-2">
-                        {topic.steps.map((step, stepIndex) => (
-                          <div key={stepIndex} className="flex items-start mb-4">
-                            <button
-                              className={`mr-4 w-6 h-6 rounded-full border-2 ${
-                                step.checked ? 'bg-green-500 border-green-500' : 'border-neutral-600'
-                              }`}
-                              onClick={(e) => {
-                                e.stopPropagation();
-                                handleCheckStep(courseIndex, topicIndex, stepIndex);
-                              }}
-                            />
-                            <div>
-                              <p className="font-medium">{step.title}</p>
-                              <div className="ml-6 mt-2">
-                                {step.resources.map((resource, resourceIndex) => (
-                                  <div key={resourceIndex} className="mb-2">
-                                    {resource.type === 'video' ? (
-                                      <YouTube videoId={resource.url.split('v=')[1]} className="w-full max-w-sm" />
-                                    ) : (
-                                      <a
-                                        href={resource.url}
-                                        target="_blank"
-                                        rel="noopener noreferrer"
-                                        className="text-blue-400 hover:underline"
-                                      >
-                                        {resource.url}
-                                      </a>
-                                    )}
-                                  </div>
-                                ))}
-                              </div>
-                            </div>
-                          </div>
-                        ))}
-                      </div>
-                    )}
-                  </div>
-                ))}
-              </div>
-            )}
-          </div>
-        ))}
+                      <div>{subLesson}</div>
+                      <input
+                        type="checkbox"
+                        checked={selectedSubLessons[index][subIndex]} // Check if this sub-lesson is checked
+                        onChange={() => handleCheckboxChange(index, subIndex)}
+                        className="bg-neutral-500 size-4 rounded-xl"
+                      />
+                    </div>
+                  ))}
+                </div>
+              )}
+            </div>
+          );
+        })}
       </div>
     </div>
   );
-}
+};
+
+const Page = () => {
+  return (
+    <div className="grid grid-cols-3 mx-auto mx-24 gap-8 justify-center items-center h-screen mt-36">
+      {courses.map((course, index) => (
+        <CourseCategory
+          key={index}
+          category={course.category}
+          items={course.items}
+        />
+      ))}
+    </div>
+  );
+};
+
+export default Page;

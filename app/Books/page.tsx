@@ -3,7 +3,7 @@
 import { useEffect, useState } from "react";
 import { DirectionAwareHover } from "@/components/ui/direction-aware-hover";
 import { getAllRecords, insertRecord } from "@/lib/firestoreFunctions";
-import BookModal from "./BookModal";
+import DynamicModal from "./BookModal";
 // Define the interface for a Book record
 interface Book {
   imageUrl: string;
@@ -15,6 +15,13 @@ interface Book {
 const BooksPage: React.FC = () => {
   const [books, setBooks] = useState<Book[]>([]);
   const [isModalOpen, setModalOpen] = useState(false); // State for modal visibility
+
+  const bookFields = [
+    { name: "imageUrl", label: "Image URL", type: "text", required: true },
+    { name: "title", label: "Title", type: "text", required: true },
+    { name: "author", label: "Author", type: "text", required: true },
+    { name: "bookUrl", label: "Book URL", type: "text", required: true },
+  ];
 
   useEffect(() => {
     const fetchBooks = async () => {
@@ -70,10 +77,11 @@ const BooksPage: React.FC = () => {
         ))}
       </div>
       {/* Modal for adding a book */}
-      <BookModal
+      <DynamicModal
         isOpen={isModalOpen}
         onClose={() => setModalOpen(false)}
-        onAddBook={handleAddBook}
+        onSubmit={handleAddBook}
+        fields={bookFields}
       />
     </div>
   );
