@@ -3,7 +3,6 @@ import { cn } from "@/lib/utils";
 import { AnimatePresence, motion } from "framer-motion";
 import Link from "next/link";
 import { useState } from "react";
-
 import React from "react";
 import {
   Modal,
@@ -13,7 +12,7 @@ import {
   ModalTrigger,
 } from "@/components/ui/animated-modal";
 import Image from "next/image";
-
+import parse from "html-react-parser";
 export const HoverEffect = ({
   items,
   className,
@@ -24,10 +23,12 @@ export const HoverEffect = ({
     link: string;
     image: string;
     date: string;
+    notes: string;
   }[];
   className?: string;
 }) => {
   let [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
+  let [selectedNotes, setSelectedNotes] = useState<string>(""); // State to hold notes for modal
 
   return (
     <div
@@ -60,7 +61,9 @@ export const HoverEffect = ({
               />
             )}
           </AnimatePresence>
-          <Card>
+          <Card
+            notes={item.notes} // Pass notes to the Card component
+          >
             <img
               src={item.image}
               alt=""
@@ -83,17 +86,12 @@ export const HoverEffect = ({
 export const Card = ({
   className,
   children,
+  notes, // Accept the notes prop
 }: {
   className?: string;
   children: React.ReactNode;
+  notes: string;
 }) => {
-  const images = [
-    "https://images.unsplash.com/photo-1517322048670-4fba75cbbb62?q=80&w=3000&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-    "https://images.unsplash.com/photo-1573790387438-4da905039392?q=80&w=3425&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-    "https://images.unsplash.com/photo-1555400038-63f5ba517a47?q=80&w=3540&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-    "https://images.unsplash.com/photo-1554931670-4ebfabf6e7a9?q=80&w=3387&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-    "https://images.unsplash.com/photo-1546484475-7f7bd55792da?q=80&w=2581&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-  ];
   return (
     <div
       className={cn(
@@ -103,96 +101,16 @@ export const Card = ({
     >
       <div className="relative z-50">
         <Modal>
-          <ModalTrigger className=" group/modal-btn">
+          <ModalTrigger className="group/modal-btn">
             <div className="p-4 text-left">{children}</div>
           </ModalTrigger>
           <ModalBody>
             <ModalContent>
               <div className="h-96 overflow-y-scroll text-white [&::-webkit-scrollbar-track]:rounded-full [&::-webkit-scrollbar-thumb]:rounded-full">
                 <h2 className="text-xl font-bold mb-4">Meeting Summary</h2>
-                <h3 className="text-lg font-semibold mb-2">
-                  How to Commercialize It
-                </h3>
-                <ul className="list-disc ml-5 mb-4">
-                  <li>Business to government approach</li>
-                  <li>Understand the level of ego with the government</li>
-                  <li>
-                    It's challenging to work with governments, be mindful when
-                    commercializing
-                  </li>
-                  <li>Reference: Urbanmetrey</li>
-                  <li>
-                    Social demographic data, natural disaster, high-risk areas
-                  </li>
-                  <li>
-                    Hit the nail in the head with insurance, start with NGOs,
-                    and expand from there
-                  </li>
-                </ul>
+                {/* Display the notes inside the modal */}
 
-                <h3 className="text-lg font-semibold mb-2">
-                  Key Opportunities
-                </h3>
-                <ul className="list-disc ml-5 mb-4">
-                  <li>Get a black box, funnel data for credit scoring</li>
-                  <li>
-                    Focus on property/town planning, target developers and town
-                    hall officials
-                  </li>
-                  <li>End goal: Build something helpful for people</li>
-                </ul>
-
-                <h3 className="text-lg font-semibold mb-2">
-                  Business Considerations
-                </h3>
-                <ul className="list-disc ml-5 mb-4">
-                  <li>One person should focus on the business aspect</li>
-                  <li>How to package solutions for companies to buy</li>
-                  <li>Pricing strategy and learning how to run the business</li>
-                  <li>Start with small agencies, collaborate with them</li>
-                </ul>
-
-                <h3 className="text-lg font-semibold mb-2">
-                  Potential Partnerships
-                </h3>
-                <ul className="list-disc ml-5 mb-4">
-                  <li>
-                    Consider partnership with Antler, but be mindful of their
-                    control
-                  </li>
-                  <li>
-                    Other potential partners: LeetCapital, Founders Institute
-                  </li>
-                  <li>News station/media outlets could use the data</li>
-                </ul>
-
-                <h3 className="text-lg font-semibold mb-2">
-                  Investments & Funding
-                </h3>
-                <ul className="list-disc ml-5 mb-4">
-                  <li>Build traction before approaching investors</li>
-                  <li>Focus on grants, study investments carefully</li>
-                  <li>One person fully focused on securing investments</li>
-                  <li>Collaborate with universities (e.g., UTP) for funding</li>
-                  <li>Consider Petronas startup accelerator, Maxis ventures</li>
-                </ul>
-
-                <h3 className="text-lg font-semibold mb-2">
-                  Networking & Events
-                </h3>
-                <ul className="list-disc ml-5 mb-4">
-                  <li>Connect with Ammar Azfar Azli and HasanVC</li>
-                  <li>
-                    Participate in panel sessions and events to meet key people
-                  </li>
-                </ul>
-
-                <h3 className="text-lg font-semibold mb-2">
-                  Entrepreneurial Mindset
-                </h3>
-                <ul className="list-disc ml-5">
-                  <li>Don't be afraid of rejection; just ask</li>
-                </ul>
+                <div className="text-sm leading-relaxed">{parse(notes)}</div>
               </div>
             </ModalContent>
             <ModalFooter className="gap-4">
@@ -209,6 +127,7 @@ export const Card = ({
     </div>
   );
 };
+
 export const CardTitle = ({
   className,
   children,
@@ -222,6 +141,7 @@ export const CardTitle = ({
     </h4>
   );
 };
+
 export const CardDescription = ({
   className,
   children,

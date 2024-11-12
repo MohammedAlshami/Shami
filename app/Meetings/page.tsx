@@ -1,8 +1,7 @@
 "use client";
 import React from "react";
 import { AppleCardsCarouselDemo } from "./AppleCardsCarouselDemo";
-import { CardHoverEffectDemo } from "./CardHoverEffectDemo";
-import { AnimatedModalDemo } from "./AnimatedModalDemo";
+import MeetingsPage from "./CardHoverEffectDemo";
 const page = () => {
   return (
     <div className="my-24">
@@ -14,11 +13,8 @@ const page = () => {
       </h2>
       <AppleCardsCarouselDemo />
 
-      <h2 className="max-w-7xl pl-4 mx-auto text-xl md:text-5xl font-bold text-neutral-800 dark:text-neutral-200 font-sans">
-        All Meetings
-      </h2>
-      <CardHoverEffectDemo />
-      <AnimatedModalDemo />
+      
+      <MeetingsPage />
 
       {/* Map through the list of places */}
       <div className="grid grid-cols-3"></div>

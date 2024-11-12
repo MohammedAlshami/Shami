@@ -1,18 +1,9 @@
 import type { Metadata } from "next";
 import localFont from "next/font/local";
 import "./globals.css";
-import Navbar from "@/components/Navbar";
 import { NavbarDemo } from "@/components/Navbar1";
-const geistSans = localFont({
-  src: "./fonts/GeistVF.woff",
-  variable: "--font-geist-sans",
-  weight: "100 900",
-});
-const geistMono = localFont({
-  src: "./fonts/GeistMonoVF.woff",
-  variable: "--font-geist-mono",
-  weight: "100 900",
-});
+
+const myFont = localFont({ src: "/../public/Fonts/SuperShiny-0v0rG.ttf" });
 
 export const metadata: Metadata = {
   title: "Create Next App",
@@ -26,8 +17,18 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className="dark">
-      <body className="bg-black flex flex-col justify-between">
-        <NavbarDemo />
+      <body
+        className={`${myFont.className} bg-neutral-800 flex flex-col justify-between`}
+      >
+        <div className="w-92 sticky top-10 left-16 transform -translate-x-1/2 z-[10000] cursor-pointer">
+          <div className="font-sans font-bold  text-3xl flex flex-col space-y-4">
+            <div className="w-full flex bg-white p-1 size-14 rounded-full fill-yellow-300 transition-transform duration-300 hover:-translate-y-1 hover:bg-yellow-300 hover:fill-gray-100">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                <path d="M3 18v-2h18v2zm0-5v-2h18v2zm0-5V6h18v2z"></path>
+              </svg>
+            </div>
+          </div>
+        </div>
         {children}
       </body>
     </html>

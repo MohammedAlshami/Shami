@@ -3,7 +3,7 @@
 import { useEffect, useState } from "react";
 import { DirectionAwareHover } from "@/components/ui/direction-aware-hover";
 import { getAllRecords, insertRecord } from "@/lib/firestoreFunctions";
-import DynamicModal from "./BookModal";
+import DynamicModal from "@/components/ui/EditModal";
 // Define the interface for a Book record
 interface Book {
   imageUrl: string;

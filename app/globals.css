@@ -2,6 +2,9 @@
 @tailwind components;
 @tailwind utilities;
 
+/* * {
+  cursor: none; 
+} */
 :root {
   --background: #ffffff;
   --foreground: #171717;
@@ -25,3 +28,5 @@ body {
     text-wrap: balance;
   }
 }
+
+

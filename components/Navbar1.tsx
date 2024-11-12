@@ -15,12 +15,12 @@ function Navbar({ className }: { className?: string }) {
   const [active, setActive] = useState<string | null>(null);
   return (
     <div
-      className={cn("fixed top-10 inset-x-0 max-w-3xl mx-auto z-50", className)}
+      className={cn("fixed top-10 inset-x-0 max-w-2xl mx-auto z-50", className)}
     >
       <Menu setActive={setActive}>
         <div className="flex justify-evenly w-full items-center text-center">
           <div className="flex gap-4 items-center">
-            <MenuItem setActive={setActive} active={active} item="Me">
+            {/* <MenuItem setActive={setActive} active={active} item="Me">
               <div className="flex flex-col space-y-4 text-sm">
                 <HoveredLink href="/Memories">Memories</HoveredLink>
                 <HoveredLink href="/Places">Places</HoveredLink>
@@ -30,19 +30,23 @@ function Navbar({ className }: { className?: string }) {
 
                 <HoveredLink href="/Timeline">Timeline</HoveredLink>
               </div>
-            </MenuItem>
-            <MenuItem setActive={setActive} active={active} item="Collection">
+            </MenuItem> */}
+            {/* <MenuItem setActive={setActive} active={active} item="Collection">
               <div className="flex flex-col space-y-4 text-sm">
                 <HoveredLink href="/Books">Books</HoveredLink>
                 <HoveredLink href="/Art">Art</HoveredLink>
                 <HoveredLink href="/Shows">Shows</HoveredLink>
                 <HoveredLink href="/Music">Music</HoveredLink>
               </div>
-            </MenuItem>
+            </MenuItem> */}
           </div>
-          <div className="text-2xl font-bold text-white">Shami</div>
+          <div className="text-2xl font-mono font-bold text-black p-4 px-8 rounded-full bg-white">Shami</div>
+          
           <div className="flex gap-4 items-center">
-            <MenuItem setActive={setActive} active={active} item="Professional">
+            {/* <HoveredLink href="/Resume">Resume</HoveredLink> */}
+            {/* <HoveredLink href="/Projects">Projects</HoveredLink> */}
+
+            {/* <MenuItem setActive={setActive} active={active} item="Professional">
               <div className="flex flex-col space-y-4 text-sm">
                 <HoveredLink href="/Resume">Resume</HoveredLink>
                 <HoveredLink href="/Projects">Projects</HoveredLink>
@@ -51,15 +55,15 @@ function Navbar({ className }: { className?: string }) {
 
                 <HoveredLink href="/Articles">Articles</HoveredLink>
               </div>
-            </MenuItem>
-
+            </MenuItem> */}
+            {/* 
             <MenuItem setActive={setActive} active={active} item="Drangue">
               <div className="flex flex-col space-y-4 text-sm">
                 <HoveredLink href="/Drangue/Pitch">Pitch</HoveredLink>
               </div>
-            </MenuItem>
+            </MenuItem> */}
 
-            <MenuItem
+            {/* <MenuItem
               setActive={setActive}
               active={active}
               item="Organizations"
@@ -78,7 +82,7 @@ function Navbar({ className }: { className?: string }) {
                   description="React Native Components"
                 />
               </div>
-            </MenuItem>
+            </MenuItem> */}
           </div>
         </div>
       </Menu>
