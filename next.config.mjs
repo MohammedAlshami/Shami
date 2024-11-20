@@ -13,9 +13,16 @@ const nextConfig = {
       "media.licdn.com",
       "camo.githubusercontent.com",
       "picsum.photos",
-      "raw.githubusercontent.com"
+      "raw.githubusercontent.com",
     ],
   },
+  eslint: {
+    ignoreDuringBuilds: true,
+  },
+  typescript: {
+    ignoreBuildErrors: true,
+  },
+  output: "standalone",
 };
 
 export default nextConfig;

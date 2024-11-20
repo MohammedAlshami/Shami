@@ -1,9 +1,8 @@
 import type { Metadata } from "next";
 import localFont from "next/font/local";
 import "./globals.css";
-import { NavbarDemo } from "@/components/Navbar1";
 
-const myFont = localFont({ src: "/../public/Fonts/SuperShiny-0v0rG.ttf" });
+const myFont = localFont({ src: "./SuperShiny-0v0rG.ttf" });
 
 export const metadata: Metadata = {
   title: "Create Next App",
@@ -20,7 +19,7 @@ export default function RootLayout({
       <body
         className={`${myFont.className} bg-neutral-800 flex flex-col justify-between`}
       >
-        <div className="w-92 sticky top-10 left-16 transform -translate-x-1/2 z-[10000] cursor-pointer">
+        <div className="w-92 absolute top-10 left-16 transform -translate-x-1/2 z-[10000] cursor-pointer">
           <div className="font-sans font-bold  text-3xl flex flex-col space-y-4">
             <div className="w-full flex bg-white p-1 size-14 rounded-full fill-yellow-300 transition-transform duration-300 hover:-translate-y-1 hover:bg-yellow-300 hover:fill-gray-100">
               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">

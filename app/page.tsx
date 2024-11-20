@@ -3,8 +3,6 @@ import { useEffect, useState } from "react";
 import { Canvas } from "@react-three/fiber";
 import { OrbitControls, useGLTF, useAnimations } from "@react-three/drei";
 import Head from "next/head";
-import CustomCursor from "./CustomCursor";
-import { IconCloudDemo } from "@/components/ui/IconCloudDemo";
 const Model = ({
   url,
   rotationX,
@@ -38,7 +36,7 @@ const Model = ({
 const Page = () => {
   const [modelUrl, setModelUrl] = useState<string | null>(null);
   const [rotationX, setRotationX] = useState(0);
-  const [rotationY, setRotationY] = useState(0);
+  const [rotationY, setRotationY] = useState(5);
 
   useEffect(() => {
     setModelUrl("/Models/kotarou_-_gakuen_babysitters.glb"); // Ensure correct path
@@ -67,7 +65,6 @@ const Page = () => {
         <meta name="description" content="A 3D model loaded with Three.js" />
       </Head>
 
-      {/* Parent container for both text and model */}
       <div className="relative">
         <style jsx>{`
           .logo.is-animetion span {
@@ -106,8 +103,6 @@ const Page = () => {
           }
         `}</style>
         <div className="relative h-[44rem] bg-blue-200 flex justify-center items-center m-4 rounded-3xl">
-          {/* <h3 className="text-4xl">Section 1</h3> */}
-
           <h2 className="logo is-animetion text-[12rem] lg:text-[18rem] text-yellow-300 wave-animation drop-shadow-lg absolute top-0 left-1/2 transform -translate-x-1/2 z-10">
             <span>S</span>
             <span>H</span>
@@ -137,7 +132,7 @@ const Page = () => {
           <div className="w-92 absolute bottom-10 right-[-8rem] transform -translate-x-1/2 z-104">
             <div className="font-sans font-bold  text-3xl flex flex-col space-y-4">
               <h2 className="text-neutral-800">
-                Check Out My Projects <br /> media
+                Check Out My Coding <br /> Projects
               </h2>
 
               <div className="w-full flex bg-white p-1 size-14 rounded-full fill-yellow-300 transition-transform duration-300 hover:-translate-y-1 hover:bg-yellow-300 hover:fill-gray-100 cursor-pointer">
@@ -148,13 +143,13 @@ const Page = () => {
             </div>
           </div>
 
-          <div className="absolute top-[5rem] left-1/12 size-[50rem] z-20">
+          <div className="absolute top-[14rem] left-1/12 size-[60rem] z-20">
             <Canvas>
               <ambientLight intensity={1} />
               <directionalLight position={[1, 0.9, 1]} intensity={1} />
               {/* <OrbitControls enablePan={false} enableZoom={false} /> */}
               {modelUrl && (
-                <group scale={[0.007, 0.007, 0.007]}>
+                <group scale={[0.01, 0.01, 0.01]}>
                   <Model
                     url={modelUrl}
                     rotationX={rotationX}
@@ -166,11 +161,11 @@ const Page = () => {
           </div>
         </div>
         <div className="relative h-[42rem] bg-green-200 flex justify-center items-center m-4 rounded-3xl">
-          <h3 className="text-4xl">Section 2</h3>
+          <h3 className="text-4xl">Tech Stack</h3>
           {/* <IconCloudDemo/> */}
         </div>
         <div className="h-screen bg-red-200 flex justify-center items-center">
-          <h3 className="text-4xl">Section 3</h3>
+          <h3 className="text-4xl">News Features</h3>
         </div>
       </div>
     </>
