@@ -3,6 +3,7 @@
 import Image from "next/image";
 import React from "react";
 import { CardBody, CardContainer, CardItem } from "@/components/ui/3d-card";
+import { Tooltip } from "@nextui-org/tooltip";
 
 const projects = [
   {
@@ -140,7 +141,7 @@ const Page = () => {
         <div className="grid grid-cols-1 gap-4 w-full px-8">
           {projects.map((project, index) => (
             <a
-              className="hover:cursor-pointer w-full border border-8 border-yellow-200/40 rounded-2xl bg-white/40 rounded-xl backdrop-blur-xl"
+              className="hover:cursor-pointer w-full rounded-2xl bg-white/40 rounded-xl backdrop-blur-xl"
               href={project.url}
               key={index}
             >
@@ -154,17 +155,49 @@ const Page = () => {
                       {project.description}
                     </p>
                   </div>
-                  <div className="mb-6 w-4/12 flex bg-white p-1 size-14 rounded-full fill-yellow-300 transition-transform duration-300 hover:-translate-y-1 hover:bg-yellow-300 hover:fill-gray-100 cursor-pointer">
-                    <svg
-                      xmlns="http://www.w3.org/2000/svg"
-                      viewBox="0 0 512 512"
-                    >
-                      <path d="M58.79 439.13A16 16 0 0 1 48 424c0-73.1 14.68-131.56 43.65-173.77c35-51 90.21-78.46 164.35-81.87V88a16 16 0 0 1 27.05-11.57l176 168a16 16 0 0 1 0 23.14l-176 168A16 16 0 0 1 256 424v-79.77c-45 1.36-79 8.65-106.07 22.64c-29.25 15.12-50.46 37.71-73.32 67a16 16 0 0 1-17.82 5.28Z"></path>
-                    </svg>
+                  <div className="flex justify-between items-center">
+                    <div className="grid grid-cols-4 gap-4">
+                      <Tooltip content="Nextjs" className="font-sans font-bold">
+                        <a
+                          href="https://github.com/MohammedAlshami"
+                          className="bg-white  p-3 size-14 rounded-full transition-transform duration-300 hover:-translate-y-4 hover:bg-yellow-300 hover:fill-gray-100 cursor-pointer"
+                        >
+                          <img
+                            src="https://cdn.worldvectorlogo.com/logos/next-js.svg"
+                            alt=""
+                          />
+                        </a>
+                      </Tooltip>
+                      <Tooltip content="Figma" className="font-sans font-bold">
+                        <a
+                          href="https://github.com/MohammedAlshami"
+                          className="flex items-center justify-center bg-white  p-1 size-14 rounded-full fill-yellow-300 transition-transform duration-300 hover:-translate-y-4 hover:bg-yellow-300 hover:fill-gray-100 cursor-pointer"
+                        >
+                          <img
+                            src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSHVIL5HpOsOFQWomhpmB5b8lTVQ9rIVnV9fg&s"
+                            alt=""
+                            className="rounded-full size-10"
+                          />
+                        </a>
+                      </Tooltip>
+                    </div>
+                    <Tooltip content="Go To Website" className="font-sans font-bold">
+                      <div className="flex justify-center  w-4/12 flex bg-white p-1 size-14 rounded-full fill-yellow-300 transition-transform duration-300 hover:-translate-y-1 hover:bg-yellow-300 hover:fill-gray-100 cursor-pointer">
+                        <svg
+                          xmlns="http://www.w3.org/2000/svg"
+                          viewBox="0 0 512 512"
+                        >
+                          <path d="M58.79 439.13A16 16 0 0 1 48 424c0-73.1 14.68-131.56 43.65-173.77c35-51 90.21-78.46 164.35-81.87V88a16 16 0 0 1 27.05-11.57l176 168a16 16 0 0 1 0 23.14l-176 168A16 16 0 0 1 256 424v-79.77c-45 1.36-79 8.65-106.07 22.64c-29.25 15.12-50.46 37.71-73.32 67a16 16 0 0 1-17.82 5.28Z"></path>
+                        </svg>
+                      </div>
+                    </Tooltip>
                   </div>
                 </div>
                 <div className="flex gap-4">
-                  <CardContainer className="inter-var w-full bg-white/40 rounded-xl backdrop-blur-xl" key={index}>
+                  <CardContainer
+                    className="inter-var w-full bg-white/40 rounded-xl backdrop-blur-xl"
+                    key={index}
+                  >
                     <CardBody className="flex gap-8 relative group/card  dark:hover:shadow-2xl dark:hover:shadow-emerald-500/[0.1]  dark:border-white/[0.2] border-black/[0.1] w-full h-auto rounded-xl p-6 border  ">
                       <CardItem translateZ="100" className="w-fit">
                         <Image
@@ -177,7 +210,10 @@ const Page = () => {
                       </CardItem>
                     </CardBody>
                   </CardContainer>
-                  <CardContainer className="inter-var w-full bg-white/40 rounded-xl backdrop-blur-xl" key={index}>
+                  <CardContainer
+                    className="inter-var w-full bg-white/40 rounded-xl backdrop-blur-xl"
+                    key={index}
+                  >
                     <CardBody className="flex gap-8 relative group/card  dark:hover:shadow-2xl dark:hover:shadow-emerald-500/[0.1]  dark:border-white/[0.2] border-black/[0.1] w-full h-auto rounded-xl p-6 border  ">
                       <CardItem translateZ="100" className="w-fit">
                         <Image
