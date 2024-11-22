@@ -92,7 +92,7 @@ const projects = [
 
 const Page = () => {
   return (
-    <div className="relative w-full">
+    <div className="relative w-full ">
       <style jsx>{`
         .logo.is-animetion span {
           display: inline-block;
@@ -129,7 +129,7 @@ const Page = () => {
           }
         }
       `}</style>
-      <div className="h-fit w-full py-12 bg-blue-200 flex flex-col justify-center items-center m-4 rounded-3xl">
+      <div className="h-fit w-full py-12 bg-blue-200 flex flex-col justify-center items-center  rounded-3xl">
         <h2 className="logo is-animetion text-[4rem] lg:text-[12rem] text-yellow-300 wave-animation drop-shadow-lg transform ">
 
           <span>My</span>

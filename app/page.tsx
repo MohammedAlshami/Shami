@@ -7,10 +7,10 @@ import ImageMouseTrail from "@/components/ui/MouseTrail";
 import { Tooltip } from "@nextui-org/tooltip";
 
 const images = [
-  "https://cdn.prod.website-files.com/66e91bdd12136933608fa38c/66eaf80ed6dbf2739a905cf8_Group%2016026.webp",
-  "https://cdn.prod.website-files.com/66e91bdd12136933608fa38c/66eaf7f1d6dbf2739a904333_Vector.webp",
-  "https://cdn.prod.website-files.com/66e91bdd12136933608fa38c/66eaf839857af3c499382240_Group%2016027%20(1).webp",
-  "https://cdn.prod.website-files.com/66e91bdd12136933608fa38c/66eaf8565cbd6067a8ca8dfe_Group%2016029.webp",
+  "https://static.vecteezy.com/system/resources/thumbnails/049/223/042/small/the-colosseum-in-rome-during-daylight-showcasing-its-ancient-architecture-and-historic-significance-cut-out-stock-png.png",
+  "https://png.pngtree.com/png-clipart/20220117/original/pngtree-column-roman-column-marble-column-png-image_7143101.png",
+  "https://png.pngtree.com/png-vector/20220610/ourmid/pngtree-mascot-icon-illustration-of-bust-of-an-ancient-roman-emperor-png-image_4971369.png",
+  "https://png.pngtree.com/png-vector/20240204/ourmid/pngtree-roman-statue-isolated-on-white-background-png-image_11605232.png",
   "https://cdn.prod.website-files.com/66e91bdd12136933608fa38c/66eaf86c917b7ec3c4dbba81_Group%2016028.webp",
   "https://cdn.prod.website-files.com/66e91bdd12136933608fa38c/66eaf8caffc645167d628fc8_Group%2016030.webp",
   "https://cdn.prod.website-files.com/66e91bdd12136933608fa38c/66eaf8dccedcdf04a26cbd41_Group%2016031.webp",
@@ -123,9 +123,9 @@ const Page = () => {
         items={images}
         maxNumberOfImages={3}
         distance={25}
-        imgClass="sm:w-40 w-28 sm:h-48 h-36  z-[100000000000000] overflow-x-hidden"
+        imgClass="sm:w-40 w-28 sm:h-48 h-36  z-[100000000000000] "
       >
-        <div className="relative overflow-x-hidden	overflow-y-hidden	">
+        <div className="relative ">
           <style jsx>{`
             .logo.is-animetion span {
               display: inline-block;
@@ -162,7 +162,7 @@ const Page = () => {
               }
             }
           `}</style>
-          <div className="relative h-[44rem] bg-blue-200 flex justify-center items-center m-4 rounded-3xl">
+          <div className="relative h-[44rem] bg-blue-200 flex justify-center items-center rounded-3xl">
             <h2 className="logo is-animetion text-[12rem] lg:text-[18rem] text-yellow-300 wave-animation drop-shadow-lg absolute top-0 left-1/2 transform -translate-x-1/2 z-10">
               <span>S</span>
               <span>H</span>
@@ -170,13 +170,17 @@ const Page = () => {
               <span>M</span>
               <span>I</span>
             </h2>
-            <div className="w-92 absolute bottom-10 left-[10rem] transform -translate-x-1/2  z-[10000]">
+            <div className="w-92 absolute bottom-10 left-[10rem] transform -translate-x-1/2  z-[10000]  hide-mouse-trail">
               <div className="font-sans font-bold  text-3xl flex flex-col space-y-4">
                 <h2 className="text-neutral-800">
                   Follow me on social <br /> media
                 </h2>
                 <div className="flex gap-4">
-                  <Tooltip content="My Linkedin" placement="bottom" className="font-sans font-bold  hide-mouse-trail">
+                  <Tooltip
+                    content="My Linkedin"
+                    placement="bottom"
+                    className="font-sans font-bold "
+                  >
                     <a
                       href="https://github.com/MohammedAlshami"
                       className="bg-white  p-1 size-14 rounded-full fill-yellow-300 transition-transform duration-300 hover:-translate-y-4 hover:bg-yellow-300 hover:fill-gray-100 cursor-pointer"
@@ -189,7 +193,11 @@ const Page = () => {
                       </svg>
                     </a>
                   </Tooltip>
-                  <Tooltip content="My Github"  placement="bottom"  className="font-sans font-bold  hide-mouse-trail">
+                  <Tooltip
+                    content="My Github"
+                    placement="bottom"
+                    className="font-sans font-bold"
+                  >
                     <a
                       href="https://www.linkedin.com/in/mohammedshami"
                       className="bg-white p-1 size-14 rounded-full fill-yellow-300 transition-transform duration-300 hover:-translate-y-4 hover:bg-yellow-300 hover:fill-gray-100 cursor-pointer"
@@ -205,24 +213,33 @@ const Page = () => {
                 </div>
               </div>
             </div>
-            <div className="w-92 absolute bottom-10 right-[-8rem] transform -translate-x-1/2  z-[10000]">
+            <div className="w-92 absolute bottom-10 right-[-8rem] transform -translate-x-1/2  z-[10000]   hide-mouse-trail">
               <div className="font-sans font-bold  text-3xl flex flex-col space-y-4">
                 <h2 className="text-neutral-800">
                   Check Out My Coding <br /> Projects
                 </h2>
 
-                <a
-                  href="/Projects"
-                  className=" hide-mouse-trail w-full flex bg-white p-1 size-14 rounded-full fill-yellow-300 transition-transform duration-300 hover:-translate-y-1 hover:bg-yellow-300 hover:fill-gray-100 cursor-pointer"
+                <Tooltip
+                  content="Check Out My Projects"
+                  placement="bottom"
+                  className="font-sans font-bold  "
                 >
-                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
-                    <path d="M58.79 439.13A16 16 0 0 1 48 424c0-73.1 14.68-131.56 43.65-173.77c35-51 90.21-78.46 164.35-81.87V88a16 16 0 0 1 27.05-11.57l176 168a16 16 0 0 1 0 23.14l-176 168A16 16 0 0 1 256 424v-79.77c-45 1.36-79 8.65-106.07 22.64c-29.25 15.12-50.46 37.71-73.32 67a16 16 0 0 1-17.82 5.28Z"></path>
-                  </svg>
-                </a>
+                  <a
+                    href="/Projects"
+                    className=" hide-mouse-trail w-full flex bg-white p-1 size-14 rounded-full fill-yellow-300 transition-transform duration-300 hover:-translate-y-1 hover:bg-yellow-300 hover:fill-gray-100 cursor-pointer"
+                  >
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      viewBox="0 0 512 512"
+                    >
+                      <path d="M58.79 439.13A16 16 0 0 1 48 424c0-73.1 14.68-131.56 43.65-173.77c35-51 90.21-78.46 164.35-81.87V88a16 16 0 0 1 27.05-11.57l176 168a16 16 0 0 1 0 23.14l-176 168A16 16 0 0 1 256 424v-79.77c-45 1.36-79 8.65-106.07 22.64c-29.25 15.12-50.46 37.71-73.32 67a16 16 0 0 1-17.82 5.28Z"></path>
+                    </svg>
+                  </a>
+                </Tooltip>
               </div>
             </div>
 
-            <div className="absolute top-[14rem] left-1/12 h-[64rem] w-[38rem] z-20  hide-mouse-trail">
+            <div className="absolute top-[8rem] left-1/12 h-[64rem] w-[38rem] z-20  hide-mouse-trail">
               <Canvas>
                 <ambientLight intensity={1} />
                 <directionalLight position={[1, 0.9, 1]} intensity={1} />
