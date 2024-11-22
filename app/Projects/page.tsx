@@ -93,8 +93,45 @@ const projects = [
 const Page = () => {
   return (
     <div className="relative w-full">
+      <style jsx>{`
+        .logo.is-animetion span {
+          display: inline-block;
+          animation: wave-text 1.5s ease-in-out infinite;
+        }
+
+        .logo.is-animetion {
+          span:nth-of-type(1) {
+            animation-delay: 0s;
+          }
+          span:nth-of-type(2) {
+            animation-delay: 0.1s;
+          }
+          span:nth-of-type(3) {
+            animation-delay: 0.2s;
+          }
+          span:nth-of-type(4) {
+            animation-delay: 0.3s;
+          }
+          span:nth-of-type(5) {
+            animation-delay: 0.4s;
+          }
+        }
+
+        @keyframes wave-text {
+          00% {
+            transform: translateY(0em);
+          }
+          60% {
+            transform: translateY(-0.2em);
+          }
+          100% {
+            transform: translateY(0em);
+          }
+        }
+      `}</style>
       <div className="h-fit w-full py-12 bg-blue-200 flex flex-col justify-center items-center m-4 rounded-3xl">
-        <h2 className="text-[4rem] lg:text-[12rem] text-yellow-300 wave-animation drop-shadow-lg transform ">
+        <h2 className="logo is-animetion text-[4rem] lg:text-[12rem] text-yellow-300 wave-animation drop-shadow-lg transform ">
+
           <span>My</span>
           <span className="w-12"></span>
           <span>P</span>
@@ -108,9 +145,9 @@ const Page = () => {
         </h2>
         <div className="grid grid-cols-1 gap-4 w-full px-8">
           {projects.map((project, index) => (
-            <a
+            <div
               className="hover:cursor-pointer w-full rounded-2xl bg-white/40 rounded-xl backdrop-blur-xl"
-              href={project.url}
+              // href={project.url}
               key={index}
             >
               <div className="flex flex-col sm:flex-row justify-between p-4 pt-6 pl-6 rounded-2xl">
@@ -131,6 +168,7 @@ const Page = () => {
                           key={idx}
                           content={icon.name}
                           className="font-sans font-bold"
+                          
                         >
                           <a
                             href={icon.link}
@@ -150,7 +188,7 @@ const Page = () => {
                       content="Go To Website"
                       className="font-sans font-bold"
                     >
-                      <div className="flex justify-center w-4/12 flex bg-white p-1 size-14 rounded-full fill-yellow-300 transition-transform duration-300 hover:-translate-y-1 hover:bg-yellow-300 hover:fill-gray-100 cursor-pointer">
+                      <div className="flex justify-center w-6/12 flex bg-white p-1 size-14 rounded-full fill-yellow-300 transition-transform duration-300 hover:-translate-y-1 hover:bg-yellow-300 hover:fill-gray-100 cursor-pointer">
                         <svg
                           xmlns="http://www.w3.org/2000/svg"
                           viewBox="0 0 512 512"
@@ -196,7 +234,7 @@ const Page = () => {
                   </CardContainer>
                 </div>
               </div>
-            </a>
+            </div>
           ))}
         </div>
       </div>

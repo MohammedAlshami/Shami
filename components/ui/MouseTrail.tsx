@@ -1,7 +1,7 @@
-//@ts-nocheck
 "use client";
 import { cn } from "@/lib/utils";
-import { createRef, useRef, useEffect } from "react";
+import { createRef, useRef, useEffect, useState, ReactNode } from "react";
+
 interface ImageMouseTrailProps {
   items: any[];
   children?: ReactNode;
@@ -10,7 +10,9 @@ interface ImageMouseTrailProps {
   distance?: number;
   maxNumberOfImages?: number;
   fadeAnimation?: boolean;
+  onMouseMove?: (x: number, y: number) => void;
 }
+
 export default function ImageMouseTrail({
   items,
   children,
@@ -19,34 +21,35 @@ export default function ImageMouseTrail({
   imgClass = "w-40 h-48",
   distance = 20,
   fadeAnimation = false,
+  onMouseMove,
 }: ImageMouseTrailProps) {
   const containerRef = useRef(null);
   const refs = useRef(items.map(() => createRef<HTMLImageElement>()));
   const currentZIndexRef = useRef(1);
-
+  const lastMousePosition = useRef({ x: 0, y: 0 });
   const hideTrailRef = useRef<HTMLElement | null>(null);
+  const globalIndexRef = useRef(0);
+  const frameRef = useRef<number>();
 
   useEffect(() => {
     hideTrailRef.current = document.querySelector(".hide-mouse-trail");
+    return () => {
+      if (frameRef.current) {
+        cancelAnimationFrame(frameRef.current);
+      }
+    };
   }, []);
-
-  let globalIndex = 0;
-  let last = { x: 0, y: 0 };
 
   const isHoveringHideElement = (x: number, y: number) => {
     const rect = hideTrailRef.current?.getBoundingClientRect();
     if (!rect) return false;
-
-    return (
-      x >= rect.left &&
-      x <= rect.right &&
-      y >= rect.top &&
-      y <= rect.bottom
-    );
+    return x >= rect.left && x <= rect.right && y >= rect.top && y <= rect.bottom;
   };
 
-  const activate = (image, x, y) => {
+  const activate = (image: HTMLImageElement, x: number, y: number) => {
     const containerRect = containerRef.current?.getBoundingClientRect();
+    if (!containerRect) return;
+
     const relativeX = x - containerRect.left;
     const relativeY = y - containerRect.top;
 
@@ -66,50 +69,62 @@ export default function ImageMouseTrail({
         image.dataset.status = "inactive";
       }, 1500);
     }
-    last = { x, y };
+    lastMousePosition.current = { x, y };
   };
 
-  const deactivate = (image) => {
+  const deactivate = (image: HTMLImageElement) => {
     image.dataset.status = "inactive";
   };
 
-  const distanceFromLast = (x, y) => {
-    return Math.hypot(x - last.x, y - last.y);
+  const distanceFromLast = (x: number, y: number) => {
+    return Math.hypot(x - lastMousePosition.current.x, y - lastMousePosition.current.y);
   };
 
-  const handleOnMove = (e) => {
-    if (isHoveringHideElement(e.clientX, e.clientY)) {
+  const updateTrail = (x: number, y: number) => {
+    if (isHoveringHideElement(x, y)) {
       refs.current.forEach((ref) => {
         if (ref.current) {
           ref.current.style.display = "none";
         }
       });
       return;
-    } else {
-      refs.current.forEach((ref) => {
-        if (ref.current) {
-          ref.current.style.display = "block";
-        }
-      });
     }
 
-    if (distanceFromLast(e.clientX, e.clientY) > window.innerWidth / distance) {
-      const lead = refs.current[globalIndex % refs.current.length].current;
-      const tail =
-        refs.current[(globalIndex - maxNumberOfImages) % refs.current.length]
-          ?.current;
+    refs.current.forEach((ref) => {
+      if (ref.current) {
+        ref.current.style.display = "block";
+      }
+    });
 
-      if (lead) activate(lead, e.clientX, e.clientY);
+    if (distanceFromLast(x, y) > window.innerWidth / distance) {
+      const lead = refs.current[globalIndexRef.current % refs.current.length].current;
+      const tail = refs.current[(globalIndexRef.current - maxNumberOfImages) % refs.current.length]?.current;
+
+      if (lead) activate(lead, x, y);
       if (tail) deactivate(tail);
 
-      globalIndex++;
+      globalIndexRef.current++;
     }
+  };
+
+  const handleMouseMove = (e: MouseEvent | Touch) => {
+    // Always notify parent component immediately
+    onMouseMove?.(e.clientX, e.clientY);
+
+    // Use RAF for trail updates
+    if (frameRef.current) {
+      cancelAnimationFrame(frameRef.current);
+    }
+
+    frameRef.current = requestAnimationFrame(() => {
+      updateTrail(e.clientX, e.clientY);
+    });
   };
 
   return (
     <section
-      onMouseMove={handleOnMove}
-      onTouchMove={(e) => handleOnMove(e.touches[0])}
+      onMouseMove={(e) => handleMouseMove(e)}
+      onTouchMove={(e) => handleMouseMove(e.touches[0])}
       ref={containerRef}
       className={cn("grid h-fit w-full rounded-lg", className)}
     >
