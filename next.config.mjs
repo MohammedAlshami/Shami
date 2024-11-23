@@ -14,6 +14,7 @@ const nextConfig = {
       "camo.githubusercontent.com",
       "picsum.photos",
       "raw.githubusercontent.com",
+      "6f99yjvsh5fhfkn4.public.blob.vercel-storage.com"
     ],
   },
   eslint: {
