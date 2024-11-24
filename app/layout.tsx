@@ -20,7 +20,7 @@ export default function RootLayout({
   return (
     <html lang="en" className="dark">
       <body className={`${myFont.className} bg-neutral-800  overflow-x-hidden`}>
-        <div className="flex flex-col justify-between">
+        <div className="">
           <Tooltip
             content="Home Page"
             placement="bottom"

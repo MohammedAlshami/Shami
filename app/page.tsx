@@ -66,7 +66,7 @@ const Page = () => {
   const [rotationX, setRotationX] = useState(0.5);
   const [rotationY, setRotationY] = useState(0);
   const [modelSize, setmodelSize] = useState(7);
-  const [isVisible, setIsVisible] = useState(true);
+  const [isVisible, setIsVisible] = useState(false);
 
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
 
@@ -126,7 +126,7 @@ const Page = () => {
 
       <div className="absolute z-[100000000000000000000000000000000000000] w-full">
         {" "}
-        <LoadingAnimation isVisible={isVisible} setIsVisible={setIsVisible} />
+        {/* <LoadingAnimation isVisible={isVisible} setIsVisible={setIsVisible} /> */}
       </div>
       {!isVisible && (
         <ImageMouseTrail
@@ -135,7 +135,7 @@ const Page = () => {
           distance={25}
           imgClass="sm:w-40 w-28 sm:h-48 h-36  z-[100000000000000] "
         >
-          <div className="relative  p-4">
+          <div className="relative  p-4 h-screen sm:overflow-hidden">
             <style jsx>{`
               .logo.is-animetion span {
                 display: inline-block;
@@ -173,16 +173,16 @@ const Page = () => {
               }
             `}</style>
             <div className="relative h-[44rem] bg-blue-200 flex justify-center items-center rounded-3xl">
-              <h2 className="logo is-animetion text-[12rem] lg:text-[18rem] text-yellow-300 wave-animation drop-shadow-lg absolute top-0 left-1/2 transform -translate-x-1/2 z-10">
+              <h2 className="logo is-animetion text-[5.5rem] sm:text-[10rem] lg:text-[18rem] text-yellow-300 wave-animation drop-shadow-lg absolute top-12 sm:top-0 left-1/2 transform -translate-x-1/2 z-10">
                 <span>S</span>
                 <span>H</span>
                 <span>A</span>
                 <span>M</span>
                 <span>I</span>
               </h2>
-              <div className="w-92 absolute bottom-10 left-[10rem] transform -translate-x-1/2  z-[10000]  hide-mouse-trail">
-                <div className="font-sans font-bold  text-3xl flex flex-col space-y-4">
-                  <h2 className="text-neutral-800">
+              <div className="w-92 absolute bottom-10 left-[5.5rem] sm:left-[10rem] transform -translate-x-1/2  z-[10000]  hide-mouse-trail">
+                <div className="font-sans font-bold  text-lg sm:text-3xl flex flex-col space-y-4">
+                  <h2 className="text-neutral-800  hidden sm:block">
                     Follow me on social <br /> media
                   </h2>
                   <div className="flex gap-4">
@@ -223,10 +223,10 @@ const Page = () => {
                   </div>
                 </div>
               </div>
-              <div className="w-92 absolute bottom-10 right-[-8rem] transform -translate-x-1/2  z-[10000]   hide-mouse-trail">
-                <div className="font-sans font-bold  text-3xl flex flex-col space-y-4">
-                  <h2 className="text-neutral-800">
-                    Check Out My Coding <br /> Projects
+              <div className="w-92 absolute bottom-10 right-0 sm:right-[-8rem] transform -translate-x-1/2  z-[10000]   hide-mouse-trail">
+                <div className="font-sans font-bold  text-lg sm:text-3xl flex flex-col space-y-4">
+                  <h2 className="text-neutral-800  hidden sm:block">
+                    Check Out  My Coding <br /> Projects
                   </h2>
 
                   <Tooltip
@@ -249,7 +249,7 @@ const Page = () => {
                 </div>
               </div>
 
-              <div className="absolute top-[8rem] left-1/12 h-[64rem] w-[38rem] z-20  hide-mouse-trail">
+              <div className="absolute top-[8rem] left-1/12 h-[28rem] w-[38rem]  lg:h-[46rem] lg:w-[38rem] z-20  hide-mouse-trail">
                 <Canvas>
                   <ambientLight intensity={1} />
                   <directionalLight position={[1, 0.9, 1]} intensity={1} />
