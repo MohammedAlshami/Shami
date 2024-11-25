@@ -43,7 +43,9 @@ export default function ImageMouseTrail({
   const isHoveringHideElement = (x: number, y: number) => {
     const rect = hideTrailRef.current?.getBoundingClientRect();
     if (!rect) return false;
-    return x >= rect.left && x <= rect.right && y >= rect.top && y <= rect.bottom;
+    return (
+      x >= rect.left && x <= rect.right && y >= rect.top && y <= rect.bottom
+    );
   };
 
   const activate = (image: HTMLImageElement, x: number, y: number) => {
@@ -77,7 +79,10 @@ export default function ImageMouseTrail({
   };
 
   const distanceFromLast = (x: number, y: number) => {
-    return Math.hypot(x - lastMousePosition.current.x, y - lastMousePosition.current.y);
+    return Math.hypot(
+      x - lastMousePosition.current.x,
+      y - lastMousePosition.current.y
+    );
   };
 
   const updateTrail = (x: number, y: number) => {
@@ -97,8 +102,12 @@ export default function ImageMouseTrail({
     });
 
     if (distanceFromLast(x, y) > window.innerWidth / distance) {
-      const lead = refs.current[globalIndexRef.current % refs.current.length].current;
-      const tail = refs.current[(globalIndexRef.current - maxNumberOfImages) % refs.current.length]?.current;
+      const lead =
+        refs.current[globalIndexRef.current % refs.current.length].current;
+      const tail =
+        refs.current[
+          (globalIndexRef.current - maxNumberOfImages) % refs.current.length
+        ]?.current;
 
       if (lead) activate(lead, x, y);
       if (tail) deactivate(tail);
@@ -126,22 +135,25 @@ export default function ImageMouseTrail({
       onMouseMove={(e) => handleMouseMove(e)}
       onTouchMove={(e) => handleMouseMove(e.touches[0])}
       ref={containerRef}
-      className={cn("grid h-fit w-full rounded-lg", className)}
+      className={cn("relative grid h-full w-full rounded-lg  overflow-y-hidden", className)}
     >
-      {items.map((item, index) => (
-        <img
-          key={index}
-          className={cn(
-            "object-contain scale-0 opacity:0 data-[status='active']:scale-100 data-[status='active']:opacity-100 transition-transform data-[status='active']:duration-500 duration-300 data-[status='active']:ease-out-expo absolute -translate-y-[50%] -translate-x-[50%]",
-            imgClass
-          )}
-          data-index={index}
-          data-status="inactive"
-          src={item}
-          alt={`image-${index}`}
-          ref={refs.current[index]}
-        />
-      ))}
+      <div className="hidden sm:absolute h-full w-full z-[10000]">
+        {items.map((item, index) => (
+          <img
+            key={index}
+            className={cn(
+              "  object-contain scale-0 opacity:0 data-[status='active']:scale-100 data-[status='active']:opacity-100 transition-transform data-[status='active']:duration-500 duration-300 data-[status='active']:ease-out-expo absolute -translate-y-[50%] -translate-x-[50%] z-[1000000000000000000000000000000000000000000000000000000000]",
+              imgClass
+            )}
+            data-index={index}
+            data-status="inactive"
+            src={item}
+            alt={`image-${index}`}
+            ref={refs.current[index]}
+          />
+        ))}
+      </div>
+    
       <article className="relative">{children}</article>
     </section>
   );

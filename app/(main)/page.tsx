@@ -66,7 +66,7 @@ const Page = () => {
   const [rotationX, setRotationX] = useState(0.5);
   const [rotationY, setRotationY] = useState(0);
   const [modelSize, setmodelSize] = useState(7);
-  const [isVisible, setIsVisible] = useState(false);
+  const [isVisible, setIsVisible] = useState(true);
 
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
 
@@ -89,12 +89,18 @@ const Page = () => {
     };
   }, []);
   useEffect(() => {
-    const rotationFactorX = (mousePosition.y / window.innerHeight) * 2 - 1; // Normalize vertical mouse position to a range of -1 to 1
-    const rotationFactorY = (mousePosition.x / window.innerWidth) * 2 - 1; // Normalize horizontal mouse position to a range of -1 to 1
+    if (window.innerWidth >= 640) {
+      // Check if the screen size is not small (e.g., 640px or larger)
+      const rotationFactorX = (mousePosition.y / window.innerHeight) * 2 - 1; // Normalize vertical mouse position to a range of -1 to 1
+      const rotationFactorY = (mousePosition.x / window.innerWidth) * 2 - 1; // Normalize horizontal mouse position to a range of -1 to 1
 
-    // Apply new rotation values
-    setRotationX(rotationFactorX);
-    setRotationY(rotationFactorY);
+      // Apply new rotation values
+      setRotationX(rotationFactorX);
+      setRotationY(rotationFactorY);
+    } else {
+      setRotationX(0.1);
+      setRotationY(0.3);
+    }
   }, [mousePosition]);
   useEffect(() => {
     setModelUrl(
@@ -118,24 +124,23 @@ const Page = () => {
 
   return (
     <>
-      {/* <CustomCursor /> */}
-      <Head>
-        <title>3D Model</title>
-        <meta name="description" content="A 3D model loaded with Three.js" />
-      </Head>
-
-      <div className="absolute z-[100000000000000000000000000000000000000] w-full">
-        {" "}
-        {/* <LoadingAnimation isVisible={isVisible} setIsVisible={setIsVisible} /> */}
+      <div className="absolute z-[10000000000000000000000000000000000] w-full">
+        <LoadingAnimation isVisible={isVisible} setIsVisible={setIsVisible} />
       </div>
-      {!isVisible && (
-        <ImageMouseTrail
-          items={images}
-          maxNumberOfImages={3}
-          distance={25}
-          imgClass="sm:w-40 w-28 sm:h-48 h-36  z-[100000000000000] "
-        >
-          <div className="relative  p-4 h-screen sm:overflow-hidden">
+      <div className="bg-blue-200 w-full h-full   rounded-xl overflow-hidden">
+        {/* <CustomCursor /> */}
+        <Head>
+          <title>3D Model</title>
+          <meta name="description" content="A 3D model loaded with Three.js" />
+        </Head>
+
+        {!isVisible && (
+          <ImageMouseTrail
+            items={images}
+            maxNumberOfImages={3}
+            distance={25}
+            imgClass="sm:w-40 w-28 sm:h-48 h-36  "
+          >
             <style jsx>{`
               .logo.is-animetion span {
                 display: inline-block;
@@ -172,84 +177,84 @@ const Page = () => {
                 }
               }
             `}</style>
-            <div className="relative h-[44rem] bg-blue-200 flex justify-center items-center rounded-3xl">
-              <h2 className="logo is-animetion text-[5.5rem] sm:text-[10rem] lg:text-[18rem] text-yellow-300 wave-animation drop-shadow-lg absolute top-12 sm:top-0 left-1/2 transform -translate-x-1/2 z-10">
-                <span>S</span>
-                <span>H</span>
-                <span>A</span>
-                <span>M</span>
-                <span>I</span>
-              </h2>
-              <div className="w-92 absolute bottom-10 left-[5.5rem] sm:left-[10rem] transform -translate-x-1/2  z-[10000]  hide-mouse-trail">
-                <div className="font-sans font-bold  text-lg sm:text-3xl flex flex-col space-y-4">
-                  <h2 className="text-neutral-800  hidden sm:block">
-                    Follow me on social <br /> media
-                  </h2>
-                  <div className="flex gap-4">
-                    <Tooltip
-                      content="My Linkedin"
-                      placement="bottom"
-                      className="font-sans font-bold "
-                    >
-                      <a
-                        href="https://github.com/MohammedAlshami"
-                        className="bg-white  p-1 size-14 rounded-full fill-yellow-300 transition-transform duration-300 hover:-translate-y-4 hover:bg-yellow-300 hover:fill-gray-100 cursor-pointer"
-                      >
-                        <svg
-                          xmlns="http://www.w3.org/2000/svg"
-                          viewBox="0 0 24 24"
-                        >
-                          <path d="M12 2A10 10 0 0 0 2 12c0 4.42 2.87 8.17 6.84 9.5c.5.08.66-.23.66-.5v-1.69c-2.77.6-3.36-1.34-3.36-1.34c-.46-1.16-1.11-1.47-1.11-1.47c-.91-.62.07-.6.07-.6c1 .07 1.53 1.03 1.53 1.03c.87 1.52 2.34 1.07 2.91.83c.09-.65.35-1.09.63-1.34c-2.22-.25-4.55-1.11-4.55-4.92c0-1.11.38-2 1.03-2.71c-.1-.25-.45-1.29.1-2.64c0 0 .84-.27 2.75 1.02c.79-.22 1.65-.33 2.5-.33s1.71.11 2.5.33c1.91-1.29 2.75-1.02 2.75-1.02c.55 1.35.2 2.39.1 2.64c.65.71 1.03 1.6 1.03 2.71c0 3.82-2.34 4.66-4.57 4.91c.36.31.69.92.69 1.85V21c0 .27.16.59.67.5C19.14 20.16 22 16.42 22 12A10 10 0 0 0 12 2"></path>
-                        </svg>
-                      </a>
-                    </Tooltip>
-                    <Tooltip
-                      content="My Github"
-                      placement="bottom"
-                      className="font-sans font-bold"
-                    >
-                      <a
-                        href="https://www.linkedin.com/in/mohammedshami"
-                        className="bg-white p-1 size-14 rounded-full fill-yellow-300 transition-transform duration-300 hover:-translate-y-4 hover:bg-yellow-300 hover:fill-gray-100 cursor-pointer"
-                      >
-                        <svg
-                          xmlns="http://www.w3.org/2000/svg"
-                          viewBox="0 0 24 24"
-                        >
-                          <path d="M19 3a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2zm-.5 15.5v-5.3a3.26 3.26 0 0 0-3.26-3.26c-.85 0-1.84.52-2.32 1.3v-1.11h-2.79v8.37h2.79v-4.93c0-.77.62-1.4 1.39-1.4a1.4 1.4 0 0 1 1.4 1.4v4.93zM6.88 8.56a1.68 1.68 0 0 0 1.68-1.68c0-.93-.75-1.69-1.68-1.69a1.69 1.69 0 0 0-1.69 1.69c0 .93.76 1.68 1.69 1.68m1.39 9.94v-8.37H5.5v8.37z"></path>
-                        </svg>
-                      </a>
-                    </Tooltip>
-                  </div>
-                </div>
-              </div>
-              <div className="w-92 absolute bottom-10 right-0 sm:right-[-8rem] transform -translate-x-1/2  z-[10000]   hide-mouse-trail">
-                <div className="font-sans font-bold  text-lg sm:text-3xl flex flex-col space-y-4">
-                  <h2 className="text-neutral-800  hidden sm:block">
-                    Check Out  My Coding <br /> Projects
-                  </h2>
+            <h2 className="top-24  logo is-animetion text-[4rem] sm:text-[7rem] md:text-[9rem] lg:text-[11rem] text-yellow-300 drop-shadow-lg z-10 absolute  left-1/2 transform -translate-x-1/2">
+              <span>S</span>
+              <span>H</span>
+              <span>A</span>
+              <span>M</span>
+              <span>I</span>
+            </h2>
 
+            <div className="relative h-full p-4 flex justify-center items-center rounded-3xl ">
+              <div className="space-y-8 text-md sm:text-2xl lg:text-3xl font-sans font-bold  absolute bottom-4 lg:bottom-10 left-[5rem] sm:left-[8rem] lg:left-[11rem] transform -translate-x-1/2  z-[10000]   hide-mouse-trail">
+                <h2 className="text-neutral-800  hidden sm:block">
+                  Follow me on social <br /> media
+                </h2>
+                <div className="flex gap-4">
                   <Tooltip
-                    content="Check Out My Projects"
+                    content="My Linkedin"
                     placement="bottom"
-                    className="font-sans font-bold  "
+                    className="font-sans font-bold "
                   >
                     <a
-                      href="/Projects"
-                      className=" hide-mouse-trail w-full flex bg-white p-1 size-14 rounded-full fill-yellow-300 transition-transform duration-300 hover:-translate-y-1 hover:bg-yellow-300 hover:fill-gray-100 cursor-pointer"
+                      href="https://github.com/MohammedAlshami"
+                       target="_blank"
+                      className="bg-white  p-1 size-14 rounded-full fill-yellow-300 transition-transform duration-300 hover:-translate-y-4 hover:bg-yellow-300 hover:fill-gray-100 cursor-pointer"
                     >
                       <svg
                         xmlns="http://www.w3.org/2000/svg"
-                        viewBox="0 0 512 512"
+                        viewBox="0 0 24 24"
                       >
-                        <path d="M58.79 439.13A16 16 0 0 1 48 424c0-73.1 14.68-131.56 43.65-173.77c35-51 90.21-78.46 164.35-81.87V88a16 16 0 0 1 27.05-11.57l176 168a16 16 0 0 1 0 23.14l-176 168A16 16 0 0 1 256 424v-79.77c-45 1.36-79 8.65-106.07 22.64c-29.25 15.12-50.46 37.71-73.32 67a16 16 0 0 1-17.82 5.28Z"></path>
+                        <path d="M12 2A10 10 0 0 0 2 12c0 4.42 2.87 8.17 6.84 9.5c.5.08.66-.23.66-.5v-1.69c-2.77.6-3.36-1.34-3.36-1.34c-.46-1.16-1.11-1.47-1.11-1.47c-.91-.62.07-.6.07-.6c1 .07 1.53 1.03 1.53 1.03c.87 1.52 2.34 1.07 2.91.83c.09-.65.35-1.09.63-1.34c-2.22-.25-4.55-1.11-4.55-4.92c0-1.11.38-2 1.03-2.71c-.1-.25-.45-1.29.1-2.64c0 0 .84-.27 2.75 1.02c.79-.22 1.65-.33 2.5-.33s1.71.11 2.5.33c1.91-1.29 2.75-1.02 2.75-1.02c.55 1.35.2 2.39.1 2.64c.65.71 1.03 1.6 1.03 2.71c0 3.82-2.34 4.66-4.57 4.91c.36.31.69.92.69 1.85V21c0 .27.16.59.67.5C19.14 20.16 22 16.42 22 12A10 10 0 0 0 12 2"></path>
+                      </svg>
+                    </a>
+                  </Tooltip>
+                  <Tooltip
+                    content="My Github"
+                    placement="bottom"
+                    className="font-sans font-bold"
+                  >
+                    <a
+                      href="https://www.linkedin.com/in/mohammedshami"
+                       target="_blank"
+                      className="bg-white p-1 size-14 rounded-full fill-yellow-300 transition-transform duration-300 hover:-translate-y-4 hover:bg-yellow-300 hover:fill-gray-100 cursor-pointer"
+                    >
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        viewBox="0 0 24 24"
+                      >
+                        <path d="M19 3a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2zm-.5 15.5v-5.3a3.26 3.26 0 0 0-3.26-3.26c-.85 0-1.84.52-2.32 1.3v-1.11h-2.79v8.37h2.79v-4.93c0-.77.62-1.4 1.39-1.4a1.4 1.4 0 0 1 1.4 1.4v4.93zM6.88 8.56a1.68 1.68 0 0 0 1.68-1.68c0-.93-.75-1.69-1.68-1.69a1.69 1.69 0 0 0-1.69 1.69c0 .93.76 1.68 1.69 1.68m1.39 9.94v-8.37H5.5v8.37z"></path>
                       </svg>
                     </a>
                   </Tooltip>
                 </div>
               </div>
 
-              <div className="absolute top-[8rem] left-1/12 h-[28rem] w-[38rem]  lg:h-[46rem] lg:w-[38rem] z-20  hide-mouse-trail">
+              <div className="space-y-8 text-md sm:text-2xl lg:text-3xl font-sans font-bold  absolute bottom-4 lg:bottom-10  right-[-1rem] sm:right-[-7rem] transform -translate-x-1/2  z-[10000]   hide-mouse-trail">
+                <h2 className="text-neutral-800 hidden sm:block">
+                  Check Out My Coding <br /> Projects
+                </h2>
+
+                <Tooltip
+                  content="Check Out My Projects"
+                  placement="bottom"
+                  className="font-sans font-bold  "
+                >
+                  <a
+                    href="/projects"
+                    className=" hide-mouse-trail w-fit sm:px-24 flex  justify-center bg-white p-1 size-14 rounded-full fill-yellow-300 transition-transform duration-300 hover:-translate-y-1 hover:bg-yellow-300 hover:fill-gray-100 cursor-pointer"
+                  >
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      viewBox="0 0 512 512"
+                    >
+                      <path d="M58.79 439.13A16 16 0 0 1 48 424c0-73.1 14.68-131.56 43.65-173.77c35-51 90.21-78.46 164.35-81.87V88a16 16 0 0 1 27.05-11.57l176 168a16 16 0 0 1 0 23.14l-176 168A16 16 0 0 1 256 424v-79.77c-45 1.36-79 8.65-106.07 22.64c-29.25 15.12-50.46 37.71-73.32 67a16 16 0 0 1-17.82 5.28Z"></path>
+                    </svg>
+                  </a>
+                </Tooltip>
+              </div>
+
+              <div className="absolute top-[8rem] left-1/12 h-[32rem]  lg:h-[42rem] w-[25rem] z-20  hide-mouse-trail z-[10000000000000000000000000]">
                 <Canvas>
                   <ambientLight intensity={1} />
                   <directionalLight position={[1, 0.9, 1]} intensity={1} />
@@ -265,9 +270,9 @@ const Page = () => {
                 </Canvas>
               </div>
             </div>
-          </div>
-        </ImageMouseTrail>
-      )}
+          </ImageMouseTrail>
+        )}
+      </div>
     </>
   );
 };
