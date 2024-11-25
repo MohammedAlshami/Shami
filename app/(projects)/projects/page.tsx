@@ -168,7 +168,7 @@ const projects = [
     additionalIcons: [
       {
         name: "Django",
-        icon: "https://ai.ls/assets/openai-logos/PNGs/openai-logomark.png",
+        icon: "https://www.svgrepo.com/show/353657/django-icon.svg",
       },
       {
         name: "OPenAI",
@@ -189,7 +189,7 @@ const projects = [
     additionalIcons: [
       {
         name: "Flask",
-        icon: "https://upload.wikimedia.org/wikipedia/commons/thumb/7/73/Arduino_IDE_logo.svg/2048px-Arduino_IDE_logo.svg.png",
+        icon: "https://cdn.jsdelivr.net/npm/simple-icons@v7/icons/flask.svg",
       },
       {
         name: "Nextjs",
@@ -214,7 +214,7 @@ const projects = [
       },
       {
         name: "Figma",
-        icon: "https://www.svgrepo.com/show/342325/unity.svg",
+        icon: "https://cdn.jsdelivr.net/npm/simple-icons@v7/icons/figma.svg",
       },
     ],
   },
@@ -231,11 +231,11 @@ const projects = [
     additionalIcons: [
       {
         name: "Kotlin",
-        icon: "https://upload.wikimedia.org/wikipedia/commons/thumb/7/73/Arduino_IDE_logo.svg/2048px-Arduino_IDE_logo.svg.png",
+        icon: "https://upload.wikimedia.org/wikipedia/commons/7/74/Kotlin_Icon.png",
       },
       {
         name: "Figma",
-        icon: "https://www.svgrepo.com/show/342325/unity.svg",
+        icon: "https://cdn.jsdelivr.net/npm/simple-icons@v7/icons/figma.svg",
       },
     ],
   },
