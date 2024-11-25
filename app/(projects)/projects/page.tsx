@@ -128,8 +128,8 @@ const projects = [
     title: "Hololens",
     description:
       "This project demonstrates how to connect an Arduino to the HoloLens 2 and enable the HoloLens 2 to read data from the Arduino using serial communication.",
-    imageUrl1: "/websites/ezgif-1-db227e1cf3.gif",
-    imageUrl2: "/websites/ezgif-1-5030031518.gif",
+    imageUrl1: "https://6f99yjvsh5fhfkn4.public.blob.vercel-storage.com/ezgif-1-db227e1cf3.gif",
+    imageUrl2: "https://6f99yjvsh5fhfkn4.public.blob.vercel-storage.com/ezgif-1-5030031518.gif",
     url: "https://github.com/MohammedAlshami/hololens",
 
     additionalIcons: [
@@ -143,7 +143,7 @@ const projects = [
       },
       {
         name: "MRTK 3",
-        icon: "/logo/MRTK.png",
+        icon: "https://6f99yjvsh5fhfkn4.public.blob.vercel-storage.com/MRTK.png",
       },
       {
         name: "Photon Pun",
@@ -156,8 +156,8 @@ const projects = [
     title: "Duri: AI Companion",
     description:
       "An AI Companion bot that you can converse with and have fun chit chats with.",
-    imageUrl1: "/websites/Screenshot 2024-11-25 161412.png",
-    imageUrl2: "/websites/Screenshot 2024-11-25 155239.png",
+    imageUrl1: "https://6f99yjvsh5fhfkn4.public.blob.vercel-storage.com/Screenshot 2024-11-25 161412.png",
+    imageUrl2: "https://6f99yjvsh5fhfkn4.public.blob.vercel-storage.com/Screenshot 2024-11-25 155239.png",
     url: "https://github.com/MohammedAlshami/Duri",
 
     additionalIcons: [
@@ -175,8 +175,8 @@ const projects = [
     title: "Finance AI Chatbot",
     description:
       "An AI powered finance advisors that allows you to manage your finances and gives you personal advice to cut your costs down and improve your finances",
-    imageUrl1: "/websites/Screenshot 2024-11-25 153742.png",
-    imageUrl2: "/websites/Screenshot 2024-11-25 153823.png",
+    imageUrl1: "https://6f99yjvsh5fhfkn4.public.blob.vercel-storage.com/Screenshot 2024-11-25 153742.png",
+    imageUrl2: "https://6f99yjvsh5fhfkn4.public.blob.vercel-storage.com/Screenshot 2024-11-25 153823.png",
     url: "https://github.com/MohammedAlshami/UMHackathon",
 
     additionalIcons: [
@@ -194,8 +194,8 @@ const projects = [
     title: "First Aid Interactive Learning",
     description:
       "An interactive learning platform to teach palm oil employees how to manage emergencies and provide first aid to their colleagues.",
-    imageUrl1: "/websites/MacBook Pro 16_ - 15.png",
-    imageUrl2: "/websites/MacBook Pro 16_ - 16.png",
+    imageUrl1: "https://6f99yjvsh5fhfkn4.public.blob.vercel-storage.com/MacBook Pro 16_ - 15.png",
+    imageUrl2: "https://6f99yjvsh5fhfkn4.public.blob.vercel-storage.com/MacBook Pro 16_ - 16.png",
     url: "https://github.com/MohammedAlshami/safetyhack",
 
     additionalIcons: [
@@ -213,8 +213,8 @@ const projects = [
     title: "Recipe Finder",
     description:
       "A recipe app to help college students and house wives to discover the best recipe available and publish their own.",
-    imageUrl1: "/websites/Frame 21.png",
-    imageUrl2: "/websites/Frame 22.png",
+    imageUrl1: "https://6f99yjvsh5fhfkn4.public.blob.vercel-storage.com/Frame 21.png",
+    imageUrl2: "https://6f99yjvsh5fhfkn4.public.blob.vercel-storage.com/Frame 22.png",
     url: "https://github.com/MohammedAlshami/Recipe-Finder",
 
     additionalIcons: [
@@ -232,8 +232,8 @@ const projects = [
     title: "throw.",
     description:
       "An AI powered trash detection app that helps user in reccling their trash and find facilities where they can recyvle and event profit of it",
-    imageUrl1: "/websites/Group 134.png",
-    imageUrl2: "/websites/Group 135.png",
+    imageUrl1: "https://6f99yjvsh5fhfkn4.public.blob.vercel-storage.com/Group 134.png",
+    imageUrl2: "https://6f99yjvsh5fhfkn4.public.blob.vercel-storage.com/Group 135.png",
     url: "https://www.figma.com/design/Rpx1qbESuLcvA6Cq0u6E97/Portfolio?node-id=3-3051&node-type=canvas",
 
     additionalIcons: [
@@ -247,8 +247,8 @@ const projects = [
     title: "Binus",
     description:
       "A hotel management app that assists Binus hotel management with booking, catering, door access and more.",
-    imageUrl1: "/websites/Frame 1.png",
-    imageUrl2: "/websites/Frame 20.png",
+    imageUrl1: "https://6f99yjvsh5fhfkn4.public.blob.vercel-storage.com/Frame 1.png",
+    imageUrl2: "https://6f99yjvsh5fhfkn4.public.blob.vercel-storage.com/Frame 20.png",
     url: "https://www.figma.com/design/Rpx1qbESuLcvA6Cq0u6E97/Portfolio?node-id=3-5380&node-type=canvas",
 
     additionalIcons: [
@@ -262,8 +262,8 @@ const projects = [
     title: "Carlo Rino",
     description:
       "An improvement redesign of Carlo Rino e-commerce website to make it more vibrant.",
-    imageUrl1: "/websites/CARLO1.png",
-    imageUrl2: "/websites/CARLO2.png",
+    imageUrl1: "https://6f99yjvsh5fhfkn4.public.blob.vercel-storage.com/CARLO1.png",
+    imageUrl2: "https://6f99yjvsh5fhfkn4.public.blob.vercel-storage.com/CARLO2.png",
 
     url: "https://www.figma.com/design/Rpx1qbESuLcvA6Cq0u6E97/Portfolio?node-id=158-65",
 
