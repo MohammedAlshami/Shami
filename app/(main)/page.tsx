@@ -127,7 +127,7 @@ const Page = () => {
       <div className="absolute z-[10000000000000000000000000000000000] w-full">
         <LoadingAnimation isVisible={isVisible} setIsVisible={setIsVisible} />
       </div>
-      <div className=" w-full h-full   rounded-xl overflow-hidden p-4">
+      <div className=" w-full h-full   rounded-xl overflow-hidden p-3">
         {/* <CustomCursor /> */}
         <Head>
           <title>3D Model</title>
