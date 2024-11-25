@@ -131,7 +131,7 @@ const Page = () => {
         {/* <CustomCursor /> */}
         <Head>
           <title>3D Model</title>
-          <meta name="description" content="A 3D model loaded with Three.js" />
+          <meta name="description" content="My Portfolio" />
         </Head>
 
         {!isVisible && (

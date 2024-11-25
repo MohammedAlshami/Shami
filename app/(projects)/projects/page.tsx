@@ -5,6 +5,7 @@ import React from "react";
 import { CardBody, CardContainer, CardItem } from "@/components/ui/3d-card";
 import { Tooltip } from "@nextui-org/tooltip";
 import { FollowerPointerCard } from "@/components/ui/following-pointer";
+import Head from "next/head";
 
 const projects = [
   {
@@ -86,7 +87,7 @@ const projects = [
       "https://6f99yjvsh5fhfkn4.public.blob.vercel-storage.com/Screenshot 2024-11-23 015746.png",
     imageUrl2:
       "https://6f99yjvsh5fhfkn4.public.blob.vercel-storage.com/Screenshot 2024-11-23 020023.png",
-    url: "https://slidemap-ga7u5iy8c-mohammedalshamis-projects.vercel.app/",
+    url: "https://github.com/MohammedAlshami/SlideMapUI",
 
     additionalIcons: [
       {
@@ -128,8 +129,10 @@ const projects = [
     title: "Hololens",
     description:
       "This project demonstrates how to connect an Arduino to the HoloLens 2 and enable the HoloLens 2 to read data from the Arduino using serial communication.",
-    imageUrl1: "https://6f99yjvsh5fhfkn4.public.blob.vercel-storage.com/ezgif-1-db227e1cf3.gif",
-    imageUrl2: "https://6f99yjvsh5fhfkn4.public.blob.vercel-storage.com/ezgif-1-5030031518.gif",
+    imageUrl1:
+      "https://6f99yjvsh5fhfkn4.public.blob.vercel-storage.com/ezgif-1-db227e1cf3.gif",
+    imageUrl2:
+      "https://6f99yjvsh5fhfkn4.public.blob.vercel-storage.com/ezgif-1-5030031518.gif",
     url: "https://github.com/MohammedAlshami/hololens",
 
     additionalIcons: [
@@ -156,8 +159,10 @@ const projects = [
     title: "Duri: AI Companion",
     description:
       "An AI Companion bot that you can converse with and have fun chit chats with.",
-    imageUrl1: "https://6f99yjvsh5fhfkn4.public.blob.vercel-storage.com/Screenshot 2024-11-25 161412.png",
-    imageUrl2: "https://6f99yjvsh5fhfkn4.public.blob.vercel-storage.com/Screenshot 2024-11-25 155239.png",
+    imageUrl1:
+      "https://6f99yjvsh5fhfkn4.public.blob.vercel-storage.com/Screenshot 2024-11-25 161412.png",
+    imageUrl2:
+      "https://6f99yjvsh5fhfkn4.public.blob.vercel-storage.com/Screenshot 2024-11-25 155239.png",
     url: "https://github.com/MohammedAlshami/Duri",
 
     additionalIcons: [
@@ -175,8 +180,10 @@ const projects = [
     title: "Finance AI Chatbot",
     description:
       "An AI powered finance advisors that allows you to manage your finances and gives you personal advice to cut your costs down and improve your finances",
-    imageUrl1: "https://6f99yjvsh5fhfkn4.public.blob.vercel-storage.com/Screenshot 2024-11-25 153742.png",
-    imageUrl2: "https://6f99yjvsh5fhfkn4.public.blob.vercel-storage.com/Screenshot 2024-11-25 153823.png",
+    imageUrl1:
+      "https://6f99yjvsh5fhfkn4.public.blob.vercel-storage.com/Screenshot 2024-11-25 153742.png",
+    imageUrl2:
+      "https://6f99yjvsh5fhfkn4.public.blob.vercel-storage.com/Screenshot 2024-11-25 153823.png",
     url: "https://github.com/MohammedAlshami/UMHackathon",
 
     additionalIcons: [
@@ -194,8 +201,10 @@ const projects = [
     title: "First Aid Interactive Learning",
     description:
       "An interactive learning platform to teach palm oil employees how to manage emergencies and provide first aid to their colleagues.",
-    imageUrl1: "https://6f99yjvsh5fhfkn4.public.blob.vercel-storage.com/MacBook Pro 16_ - 15.png",
-    imageUrl2: "https://6f99yjvsh5fhfkn4.public.blob.vercel-storage.com/MacBook Pro 16_ - 16.png",
+    imageUrl1:
+      "https://6f99yjvsh5fhfkn4.public.blob.vercel-storage.com/MacBook Pro 16_ - 15.png",
+    imageUrl2:
+      "https://6f99yjvsh5fhfkn4.public.blob.vercel-storage.com/MacBook Pro 16_ - 16.png",
     url: "https://github.com/MohammedAlshami/safetyhack",
 
     additionalIcons: [
@@ -213,8 +222,10 @@ const projects = [
     title: "Recipe Finder",
     description:
       "A recipe app to help college students and house wives to discover the best recipe available and publish their own.",
-    imageUrl1: "https://6f99yjvsh5fhfkn4.public.blob.vercel-storage.com/Frame 21.png",
-    imageUrl2: "https://6f99yjvsh5fhfkn4.public.blob.vercel-storage.com/Frame 22.png",
+    imageUrl1:
+      "https://6f99yjvsh5fhfkn4.public.blob.vercel-storage.com/Frame 21.png",
+    imageUrl2:
+      "https://6f99yjvsh5fhfkn4.public.blob.vercel-storage.com/Frame 22.png",
     url: "https://github.com/MohammedAlshami/Recipe-Finder",
 
     additionalIcons: [
@@ -232,8 +243,10 @@ const projects = [
     title: "throw.",
     description:
       "An AI powered trash detection app that helps user in reccling their trash and find facilities where they can recyvle and event profit of it",
-    imageUrl1: "https://6f99yjvsh5fhfkn4.public.blob.vercel-storage.com/Group 134.png",
-    imageUrl2: "https://6f99yjvsh5fhfkn4.public.blob.vercel-storage.com/Group 135.png",
+    imageUrl1:
+      "https://6f99yjvsh5fhfkn4.public.blob.vercel-storage.com/Group 134.png",
+    imageUrl2:
+      "https://6f99yjvsh5fhfkn4.public.blob.vercel-storage.com/Group 135.png",
     url: "https://www.figma.com/design/Rpx1qbESuLcvA6Cq0u6E97/Portfolio?node-id=3-3051&node-type=canvas",
 
     additionalIcons: [
@@ -247,8 +260,10 @@ const projects = [
     title: "Binus",
     description:
       "A hotel management app that assists Binus hotel management with booking, catering, door access and more.",
-    imageUrl1: "https://6f99yjvsh5fhfkn4.public.blob.vercel-storage.com/Frame 1.png",
-    imageUrl2: "https://6f99yjvsh5fhfkn4.public.blob.vercel-storage.com/Frame 20.png",
+    imageUrl1:
+      "https://6f99yjvsh5fhfkn4.public.blob.vercel-storage.com/Frame 1.png",
+    imageUrl2:
+      "https://6f99yjvsh5fhfkn4.public.blob.vercel-storage.com/Frame 20.png",
     url: "https://www.figma.com/design/Rpx1qbESuLcvA6Cq0u6E97/Portfolio?node-id=3-5380&node-type=canvas",
 
     additionalIcons: [
@@ -262,8 +277,10 @@ const projects = [
     title: "Carlo Rino",
     description:
       "An improvement redesign of Carlo Rino e-commerce website to make it more vibrant.",
-    imageUrl1: "https://6f99yjvsh5fhfkn4.public.blob.vercel-storage.com/CARLO1.png",
-    imageUrl2: "https://6f99yjvsh5fhfkn4.public.blob.vercel-storage.com/CARLO2.png",
+    imageUrl1:
+      "https://6f99yjvsh5fhfkn4.public.blob.vercel-storage.com/CARLO1.png",
+    imageUrl2:
+      "https://6f99yjvsh5fhfkn4.public.blob.vercel-storage.com/CARLO2.png",
 
     url: "https://www.figma.com/design/Rpx1qbESuLcvA6Cq0u6E97/Portfolio?node-id=158-65",
 
@@ -279,6 +296,10 @@ const projects = [
 const Page = () => {
   return (
     <div className="relative w-full overflow-x-hidden ">
+      <Head>
+        <title>3D Model</title>
+        <meta name="description" content="My Projects" />
+      </Head>
       <style jsx>{`
         .logo.is-animetion span {
           display: inline-block;
@@ -346,7 +367,11 @@ const Page = () => {
                         content="Go To Project"
                         className="font-sans font-bold "
                       >
-                        <a href={project.url}   target="_blank" className="flex lg:hidden  justify-center w-2/12 md:w-3/12 flex bg-white p-1 size-14 rounded-full fill-yellow-300 transition-transform duration-300 hover:-translate-y-1 hover:bg-yellow-300 hover:fill-gray-100 cursor-pointer">
+                        <a
+                          href={project.url}
+                          target="_blank"
+                          className="flex lg:hidden  justify-center w-2/12 md:w-3/12 flex bg-white p-1 size-14 rounded-full fill-yellow-300 transition-transform duration-300 hover:-translate-y-1 hover:bg-yellow-300 hover:fill-gray-100 cursor-pointer"
+                        >
                           <svg
                             xmlns="http://www.w3.org/2000/svg"
                             viewBox="0 0 512 512"
@@ -386,7 +411,11 @@ const Page = () => {
                       content="Go To Project"
                       className="font-sans font-bold "
                     >
-                      <a href={project.url}   target="_blank" className="hidden lg:flex  justify-center w-6/12 flex bg-white p-1 size-14 rounded-full fill-yellow-300 transition-transform duration-300 hover:-translate-y-1 hover:bg-yellow-300 hover:fill-gray-100 cursor-pointer">
+                      <a
+                        href={project.url}
+                        target="_blank"
+                        className="hidden lg:flex  justify-center w-6/12 flex bg-white p-1 size-14 rounded-full fill-yellow-300 transition-transform duration-300 hover:-translate-y-1 hover:bg-yellow-300 hover:fill-gray-100 cursor-pointer"
+                      >
                         <svg
                           xmlns="http://www.w3.org/2000/svg"
                           viewBox="0 0 512 512"
