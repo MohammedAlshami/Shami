@@ -18,7 +18,7 @@ export default function RootLayout({
   return (
     <html lang="en" className="dark">
       <body
-        className={`${myFont.className} bg-neutral-800 h-svh	 w-full p-4`}
+        className={`${myFont.className} bg-neutral-800 h-svh	 w-full p-0`}
       >
         {children}
         <Tooltip

@@ -336,7 +336,7 @@ const Page = () => {
           }
         }
       `}</style>
-      <div className=" h-fit w-full py-12 bg-blue-200 flex flex-col justify-center items-center  rounded-3xl">
+      <div className=" h-fit w-full py-12 bg-blue-200 flex flex-col justify-center items-center  ">
         <h2 className="mt-12 mb-4 lg:mt-0 logo is-animetion text-[4rem] lg:text-[12rem] text-yellow-300 wave-animation drop-shadow-lg transform ">
           <span>My</span>
           <span className="w-12"></span>
@@ -349,7 +349,7 @@ const Page = () => {
           <span>T</span>
           <span>S</span>
         </h2>
-        <div className="grid grid-cols-1 gap-16 w-full px-8">
+        <div className="grid grid-cols-1 gap-16 w-full px-3 sm:px-8">
           {projects.map((project, index) => (
             <div
               className="hover:cursor-pointer w-full rounded-2xl bg-white/40 rounded-xl backdrop-blur-xl"
