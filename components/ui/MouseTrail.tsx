@@ -135,7 +135,7 @@ export default function ImageMouseTrail({
       onMouseMove={(e) => handleMouseMove(e)}
       onTouchMove={(e) => handleMouseMove(e.touches[0])}
       ref={containerRef}
-      className={cn("relative grid h-full w-full rounded-lg  overflow-y-hidden", className)}
+      className={cn("relative grid h-full w-full rounded-lg  bg-blue-200 overflow-y-hidden", className)}
     >
       <div className="hidden sm:absolute h-full w-full z-[10000]">
         {items.map((item, index) => (

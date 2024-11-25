@@ -127,7 +127,7 @@ const Page = () => {
       <div className="absolute z-[10000000000000000000000000000000000] w-full">
         <LoadingAnimation isVisible={isVisible} setIsVisible={setIsVisible} />
       </div>
-      <div className="bg-blue-200 w-full h-full   rounded-xl overflow-hidden">
+      <div className=" w-full h-full   rounded-xl overflow-hidden p-4">
         {/* <CustomCursor /> */}
         <Head>
           <title>3D Model</title>
@@ -230,7 +230,7 @@ const Page = () => {
                 </div>
               </div>
 
-              <div className="space-y-8 text-md sm:text-2xl lg:text-3xl font-sans font-bold  absolute bottom-4 lg:bottom-10  right-[-1rem] sm:right-[-7rem] transform -translate-x-1/2  z-[10000]   hide-mouse-trail">
+              <div className="space-y-8 text-md sm:text-2xl lg:text-3xl font-sans font-bold  absolute bottom-4 lg:bottom-10  right-[-2rem] sm:right-[-7rem] transform -translate-x-1/2  z-[10000]   hide-mouse-trail">
                 <h2 className="text-neutral-800 hidden sm:block">
                   Check Out My Coding <br /> Projects
                 </h2>
@@ -242,7 +242,7 @@ const Page = () => {
                 >
                   <a
                     href="/projects"
-                    className=" hide-mouse-trail w-fit sm:px-24 flex  justify-center bg-white p-1 size-14 rounded-full fill-yellow-300 transition-transform duration-300 hover:-translate-y-1 hover:bg-yellow-300 hover:fill-gray-100 cursor-pointer"
+                    className=" hide-mouse-trail w-32 sm:w-full sm:px-24 flex  justify-center bg-white p-1 size-14 rounded-full fill-yellow-300 transition-transform duration-300 hover:-translate-y-1 hover:bg-yellow-300 hover:fill-gray-100 cursor-pointer"
                   >
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
@@ -254,7 +254,7 @@ const Page = () => {
                 </Tooltip>
               </div>
 
-              <div className="absolute top-[8rem] left-1/12 h-[32rem]  lg:h-[42rem] w-[25rem] z-20  hide-mouse-trail z-[10000000000000000000000000]">
+              <div className="absolute top-[8rem] left-1/12 h-[32rem]  lg:h-[42rem] w-full z-20  hide-mouse-trail z-[10000000000000000000000000]">
                 <Canvas>
                   <ambientLight intensity={1} />
                   <directionalLight position={[1, 0.9, 1]} intensity={1} />

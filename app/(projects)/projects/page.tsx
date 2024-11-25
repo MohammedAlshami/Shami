@@ -426,7 +426,7 @@ const Page = () => {
                     </Tooltip>
                   </div>
                 </div>
-                <div className="flex gap-4 flex-col sm:flex-row w-8/12">
+                <div className="flex gap-4 flex-col sm:flex-row w-full sm:w-8/12">
                   <FollowerPointerCard
                     title={
                       <TitleComponent
