@@ -12,7 +12,7 @@ import LoadingAnimation from "@/components/ui/PageLoading";
 function Loader() {
   const { progress } = useProgress();
   return (
-    <Html center className="h-[32rem]  lg:h-[42rem]  w-[24rem]">
+    <Html center className="h-[32rem]  lg:h-[42rem]  w-[15rem] lg:w-[24rem]">
       <div className="w-fit">
         <img
           src="https://6f99yjvsh5fhfkn4.public.blob.vercel-storage.com/placeholder.png"
