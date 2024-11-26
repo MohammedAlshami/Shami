@@ -15,7 +15,7 @@ function Loader() {
     <Html center className="h-[32rem]  lg:h-[42rem]  w-[24rem]">
       <div className="w-fit">
         <img
-          src="/Models/placeholder.png"
+          src="https://6f99yjvsh5fhfkn4.public.blob.vercel-storage.com/placeholder.png"
           alt=""
           className="w-full h-full z-[1000000000000000000000000000000000000000000000]"
         />
