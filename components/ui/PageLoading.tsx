@@ -6,7 +6,7 @@ export default function LoadingAnimation({ isVisible, setIsVisible }) {
   const [percentage, setPercentage] = useState(0);
 
   useEffect(() => {
-    const duration = 10000; // 7 seconds
+    const duration = 6000; // 7 seconds
     const intervalTime = 70; // Update every 70ms
     const totalUpdates = duration / intervalTime;
 

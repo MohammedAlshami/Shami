@@ -2,12 +2,27 @@
 
 import { useEffect, useState } from "react";
 import { Canvas } from "@react-three/fiber";
-import { useGLTF, useAnimations } from "@react-three/drei";
+import { useGLTF, useAnimations, Html, useProgress } from "@react-three/drei";
 import Head from "next/head";
 import ImageMouseTrail from "@/components/ui/MouseTrail";
 import { Tooltip } from "@nextui-org/tooltip";
+import { Suspense } from "react";
 
 import LoadingAnimation from "@/components/ui/PageLoading";
+function Loader() {
+  const { progress } = useProgress();
+  return (
+    <Html center className="h-[32rem]  lg:h-[42rem]  w-[24rem]">
+      <div className="w-fit">
+        <img
+          src="/Models/placeholder.png"
+          alt=""
+          className="w-full h-full z-[1000000000000000000000000000000000000000000000]"
+        />
+      </div>
+    </Html>
+  );
+}
 const images = [
   "https://static.vecteezy.com/system/resources/thumbnails/049/223/042/small/the-colosseum-in-rome-during-daylight-showcasing-its-ancient-architecture-and-historic-significance-cut-out-stock-png.png",
   "https://png.pngtree.com/png-clipart/20220117/original/pngtree-column-roman-column-marble-column-png-image_7143101.png",
@@ -198,7 +213,7 @@ const Page = () => {
                   >
                     <a
                       href="https://github.com/MohammedAlshami"
-                       target="_blank"
+                      target="_blank"
                       className="bg-white  p-1 size-14 rounded-full fill-yellow-300 transition-transform duration-300 hover:-translate-y-4 hover:bg-yellow-300 hover:fill-gray-100 cursor-pointer"
                     >
                       <svg
@@ -216,7 +231,7 @@ const Page = () => {
                   >
                     <a
                       href="https://www.linkedin.com/in/mohammedshami"
-                       target="_blank"
+                      target="_blank"
                       className="bg-white p-1 size-14 rounded-full fill-yellow-300 transition-transform duration-300 hover:-translate-y-4 hover:bg-yellow-300 hover:fill-gray-100 cursor-pointer"
                     >
                       <svg
@@ -256,17 +271,19 @@ const Page = () => {
 
               <div className="absolute top-[8rem] left-1/12 h-[32rem]  lg:h-[42rem] w-full z-20  hide-mouse-trail z-[10000000000000000000000000]">
                 <Canvas>
-                  <ambientLight intensity={1} />
-                  <directionalLight position={[1, 0.9, 1]} intensity={1} />
-                  {modelUrl && (
-                    <group scale={[modelSize, modelSize, modelSize]}>
-                      <Model
-                        url={modelUrl}
-                        rotationX={rotationX}
-                        rotationY={rotationY}
-                      />
-                    </group>
-                  )}
+                  <Suspense fallback={<Loader />}>
+                    <ambientLight intensity={1} />
+                    <directionalLight position={[1, 0.9, 1]} intensity={1} />
+                    {modelUrl && (
+                      <group scale={[modelSize, modelSize, modelSize]}>
+                        <Model
+                          url={modelUrl}
+                          rotationX={rotationX}
+                          rotationY={rotationY}
+                        />
+                      </group>
+                    )}
+                  </Suspense>
                 </Canvas>
               </div>
             </div>
